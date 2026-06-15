@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installer Dashboard | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item active" id="menuOverview">
+          <a href="sellerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDeployments">
+          <a href="siteinstallations.html"><i data-lucide="wrench"></i> Site Installations</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuAlerts">
+          <a href="systemdiagnostics.html"><i data-lucide="activity"></i> System Diagnostics</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuTickets">
+          <a href="servicetickets.html"><i data-lucide="clipboard-list"></i> Service Tickets</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuInventory">
+          <a href="inventorycontrol.html"><i data-lucide="package"></i> Inventory Control</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuProfile">
+          <a href="installerprofile.html"><i data-lucide="user"></i> Installer Profile</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Installer Control Center</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Diag channels, pending customer assess requests, and network nodes status.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName" style="background-color: #EF4444;">IN</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">installer@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color: var(--primary-light); color: var(--primary-color);"><i data-lucide="clipboard-list"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Pending Audits</h3>
+            <div class="dashboard-stat-value" id="statsAudits">2 Requests</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="check-circle-2"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Installs</h3>
+            <div class="dashboard-stat-value" id="statsSites">144 Sites</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="activity"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Node Health</h3>
+            <div class="dashboard-stat-value">99.8% Online</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEF3C7; color:#D97706;"><i data-lucide="alert-triangle"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Warnings</h3>
+            <div class="dashboard-stat-value">2 Nodes Low Batt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 1: OVERVIEW -->
+      <div id="viewOverview" class="dashboard-view fade-in active">
+        <div class="dashboard-grid">
+          <!-- Pending Deployments Request -->
+          <div class="dashboard-panel reveal-left">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Pending Deployment Requests</h2>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:1.25rem;" id="pendingTicketsList">
+              <!-- Site 1 -->
+              <div style="background-color:var(--bg-light); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:1.25rem; display:flex; justify-content:space-between; align-items:center;" class="pending-ticket-row">
+                <div>
+                  <h4 style="font-weight:600; color:var(--dark-color);">Richard Hendricks (Enterprise)</h4>
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;"><i data-lucide="map-pin" style="width:12px; height:12px; display:inline; vertical-align:middle;"></i> Silicon Valley Hub (32 Devices Scheduled)</p>
+                  <span class="scenario-action-badge" style="background-color:#E0F2FE; color:#0369A1;">Requested: June 15, 2026</span>
+                </div>
+                <button class="btn btn-primary assign-btn" style="padding:0.5rem 1rem; font-size:0.8rem; border-radius:6px;" data-client="Richard Hendricks" data-addr="Silicon Valley Hub" data-devices="32" data-plan="Enterprise">Assign Ticket</button>
+              </div>
+
+              <!-- Site 2 -->
+              <div style="background-color:var(--bg-light); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:1.25rem; display:flex; justify-content:space-between; align-items:center;" class="pending-ticket-row">
+                <div>
+                  <h4 style="font-weight:600; color:var(--dark-color);">Erlich Bachman (Premium)</h4>
+                  <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;"><i data-lucide="map-pin" style="width:12px; height:12px; display:inline; vertical-align:middle;"></i> Incubator Mansion (24 Devices Scheduled)</p>
+                  <span class="scenario-action-badge" style="background-color:#E0F2FE; color:#0369A1;">Requested: June 14, 2026</span>
+                </div>
+                <button class="btn btn-primary assign-btn" style="padding:0.5rem 1rem; font-size:0.8rem; border-radius:6px;" data-client="Erlich Bachman" data-addr="Incubator Mansion" data-devices="24" data-plan="Premium">Assign Ticket</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Diagnostics Actions -->
+          <div class="dashboard-panel reveal-right">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Quick Commands</h2>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">Perform actions to run remote diagnostic commands. Results save to System Diagnostics page.</p>
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+              <a href="systemdiagnostics.html?cmd=ping" class="btn btn-secondary" style="width:100%; border-radius: 6px; justify-content: flex-start;">
+                <i data-lucide="terminal"></i> Ping All Gateways
+              </a>
+              <a href="systemdiagnostics.html?cmd=ota" class="btn btn-secondary" style="width:100%; border-radius: 6px; justify-content: flex-start;">
+                <i data-lucide="refresh-cw"></i> Check OTA Firmware Status
+              </a>
+              <a href="systemdiagnostics.html?cmd=scan" class="btn btn-secondary" style="width:100%; border-radius: 6px; justify-content: flex-start;">
+                <i data-lucide="activity"></i> Signal Scan (Zigbee channels)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredEmail = localStorage.getItem('stackly_user_email') || 'installer@stackly.com';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const welcomeUser = document.getElementById('welcomeUser');
+      
+      if (userDisplay) userDisplay.innerText = registeredEmail;
+      if (welcomeUser) welcomeUser.innerText = `Control Center: ${registeredEmail.split('@')[0]}`;
+      if (avatarName) {
+        const initials = registeredEmail.split('@')[0].substring(0,2).toUpperCase();
+        avatarName.innerText = initials || 'IN';
+      }
+
+      // Assign ticket logic
+      const assignBtns = document.querySelectorAll('.assign-btn');
+      let pendingAuditsCount = 2;
+      let activeSitesCount = 144;
+
+      assignBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const client = btn.getAttribute('data-client');
+          const addr = btn.getAttribute('data-addr');
+          const devices = btn.getAttribute('data-devices');
+          
+          // Save ticket variables to mock state
+          let assignedSites = JSON.parse(localStorage.getItem('stackly_assigned_sites') || '[]');
+          assignedSites.push({ client, addr, devices, progress: '15%', status: 'Assigned' });
+          localStorage.setItem('stackly_assigned_sites', JSON.stringify(assignedSites));
+
+          btn.closest('.pending-ticket-row').remove();
+
+          pendingAuditsCount--;
+          activeSitesCount++;
+          document.getElementById('statsAudits').innerText = `${pendingAuditsCount} Requests`;
+          document.getElementById('statsSites').innerText = `${activeSitesCount} Sites`;
+
+          showToast(`Ticket assigned: ${client} initialized in site pipelines.`);
+        });
+      });
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

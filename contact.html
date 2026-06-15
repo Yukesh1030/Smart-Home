@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY | Contact Us & FAQs</title>
+  <meta name="description" content="Reach out to STACKLY support teams, read common home automation FAQs, and find our office locations.">
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. Header / Navbar -->
+  <header class="header" id="mainHeader">
+    <div class="container navbar">
+      <a href="index.html" class="brand" id="brandLogo">
+        STACKLY<span class="brand-accent">.</span>
+      </a>
+      
+      <button class="menu-toggle" aria-label="Toggle Navigation" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="samartdevice.html">Smart Devices</a></li>
+        <li><a href="automation.html">Automation</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li class="mobile-login-btn" style="display: none;"><a href="login.html" class="btn btn-primary">Login</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary" id="loginBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Page Banner Section -->
+  <section class="page-banner" id="contactBannerSection" style="background-image: url('assets/contact.webp');">
+    <div class="page-banner-overlay"></div>
+    <div class="container page-banner-content reveal-left">
+      <h1 class="page-banner-title">Contact Us</h1>
+      <div class="page-banner-breadcrumbs">
+        <a href="index.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Contact Us Information Section -->
+  <section class="contact-info-section" id="contactInfoSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Connect with Our Teams</h2>
+        <p class="section-desc">Have questions about smart home installations, devices, or billing? Reach out through our direct corporate channels.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem;">Corporate Channels</h3>
+          
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="phone"></i></div>
+            <div>
+              <h4 class="contact-method-title">Call Us</h4>
+              <p class="contact-method-value">Toll Free: +1 (800) 555-0199</p>
+              <p class="contact-method-value">Corporate Office: +91 22 6665 8282</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="mail"></i></div>
+            <div>
+              <h4 class="contact-method-title">Email Us</h4>
+              <p class="contact-method-value">Support: support@stackly.com</p>
+              <p class="contact-method-value">Sales: sales@stackly.com</p>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+            <div>
+              <h4 class="contact-method-title">Corporate Office</h4>
+              <p class="contact-method-value">Tata Power EZHome District Hub,</p>
+              <p class="contact-method-value">Suite 350, Mumbai, MH, India</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Contact Form Section -->
+        <div class="contact-card reveal-right" id="inquiryFormBox">
+          <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem;">Inquiry Submission</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" placeholder="+1 (555) 000-0000">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message *</label>
+              <textarea class="form-control" rows="4" placeholder="How can we help automate your home?" style="resize:none;" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Support Services Section -->
+  <section class="support-services section-bg-light" id="supportServicesSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Technical Assistance</span>
+        <h2 class="section-title">Support Services</h2>
+        <p class="section-desc">Need assistance with active devices? We provide comprehensive, premium help channels for all homeowners.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal-up">
+          <div class="feature-icon-wrapper" style="background-color: var(--primary-light); color: var(--primary-color);">
+            <i data-lucide="wrench"></i>
+          </div>
+          <h3 class="feature-title">Site Assessment</h3>
+          <p class="feature-desc">Schedule a visit with our engineers to map and design customized automation pathways for your house layout.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="feature-icon-wrapper" style="background-color: var(--primary-light); color: var(--primary-color);">
+            <i data-lucide="help-circle"></i>
+          </div>
+          <h3 class="feature-title">24/7 Helpline</h3>
+          <p class="feature-desc">Connect with our support team anytime to resolve device disconnections, firmware updates, or cloud sync bugs.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
+          <div class="feature-icon-wrapper" style="background-color: var(--primary-light); color: var(--primary-color);">
+            <i data-lucide="rotate-ccw"></i>
+          </div>
+          <h3 class="feature-title">Warranty Exchange</h3>
+          <p class="feature-desc">All STACKLY devices carry a premium 2-year replacement warranty. If a switch plate malfunctions, we replace it free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">FAQ Help Center</span>
+        <h2 class="section-title">Common Questions</h2>
+        <p class="section-desc">Find quick answers to common questions about STACKLY features, installation, and assistant compatibility.</p>
+      </div>
+
+      <div class="faq-list reveal-up">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Do STACKLY switches require rewiring my home?</span>
+            <i data-lucide="chevron-down"></i>
+          </div>
+          <div class="faq-content">
+            <p>No. STACKLY smart switches are designed to fit directly into your existing back boxes. They use your current wiring infrastructure, requiring only standard neutral and phase connections. No walls are broken, and installation takes under 15 minutes per switch plate.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Will my devices still work if my internet goes down?</span>
+            <i data-lucide="chevron-down"></i>
+          </div>
+          <div class="faq-content">
+            <p>Yes. STACKLY controllers establish a local area network (LAN) using your home router. Basic physical triggers, schedules, and custom automation routines run locally without requiring cloud servers, so your lights and schedules work perfectly even without internet connection.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Can I share controls with my family members?</span>
+            <i data-lucide="chevron-down"></i>
+          </div>
+          <div class="faq-content">
+            <p>Yes. The STACKLY application features a "Home Sharing" setting. Invite family members or guests using their email addresses. You can grant full administrator permissions or restrict permissions to specific rooms, devices, or timetables.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>How much energy can I save using STACKLY?</span>
+            <i data-lucide="chevron-down"></i>
+          </div>
+          <div class="faq-content">
+            <p>Homeowners save an average of 15% to 22% on monthly energy bills. Savings are achieved through automated standby cut-offs, smart scheduling of water heaters during off-peak hours, and motion-based lighting controls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Location Map Section -->
+  <section class="location-map section-bg-light" id="locationMapSection">
+    <div class="container">
+      <div class="section-header reveal-up" style="margin-bottom: 3rem;">
+        <span class="section-tag">Find Us</span>
+        <h2 class="section-title">Office Location</h2>
+      </div>
+
+      <div class="map-box reveal-up" id="officeMap">
+        <div class="map-mockup">
+          <div class="map-bubble">
+            STACKLY Corporate Hub<br>
+            <span style="font-weight:400; color:var(--text-muted); font-size:0.75rem;">Tata Power EZHome District, Mumbai</span>
+          </div>
+          <div class="map-pin">
+            <i data-lucide="map-pin" style="width:20px; height:20px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Footer (Identical) -->
+  <footer class="footer" id="mainFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-box">
+          <div class="footer-brand">STACKLY<span>.</span></div>
+          <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
+          <div class="footer-socials">
+            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="samartdevice.html">Smart Devices</a></li>
+            <li><a href="automation.html">Home Automation</a></li>
+            <li><a href="security.html">Home Security</a></li>
+            <li><a href="404.html">Energy Analytics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ Help Center</a></li>
+            <li><a href="404.html">Technical Portal</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Corporate Info</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Tata Power EZHome District Hub, Suite 350, Mumbai, MH, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>+1 (800) 555-0199</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <span>support@stackly.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 STACKLY Smart Home. All Rights Reserved. Inspired by Tata Power EZHome.</p>
+        <p>
+          <a href="404.html" style="margin-right: 1rem;">Terms of Service</a>
+          <a href="404.html">Sitemap</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Installations | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Expandable Site Node Panel */
+    .expandable-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    }
+    .expandable-details.open {
+      max-height: 1000px;
+      transition: max-height 0.6s cubic-bezier(1, 0, 1, 0);
+    }
+    /* Modal Animation */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(17,24,39,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-overlay.open .modal-box {
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="sellerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuDeployments">
+          <a href="siteinstallations.html"><i data-lucide="wrench"></i> Site Installations</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuAlerts">
+          <a href="systemdiagnostics.html"><i data-lucide="activity"></i> System Diagnostics</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuTickets">
+          <a href="servicetickets.html"><i data-lucide="clipboard-list"></i> Service Tickets</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuInventory">
+          <a href="inventorycontrol.html"><i data-lucide="package"></i> Inventory Control</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuProfile">
+          <a href="installerprofile.html"><i data-lucide="user"></i> Installer Profile</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Site Installations</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Track physical node setups and customer handovers.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName" style="background-color: #EF4444;">IN</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">installer@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color: var(--primary-light); color: var(--primary-color);"><i data-lucide="clipboard-list"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Pending Audits</h3>
+            <div class="dashboard-stat-value" id="statsAudits">2 Requests</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="check-circle-2"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Installs</h3>
+            <div class="dashboard-stat-value" id="statsSites">144 Sites</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="activity"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Node Health</h3>
+            <div class="dashboard-stat-value">99.8% Online</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEF3C7; color:#D97706;"><i data-lucide="alert-triangle"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Warnings</h3>
+            <div class="dashboard-stat-value">2 Nodes Low Batt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW: SITE INSTALLATIONS -->
+      <div id="viewDeployments" class="dashboard-view fade-in active">
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-header">
+            <h2 class="dashboard-panel-title">Active Site Installation Pipelines</h2>
+            <button class="btn btn-primary" id="openAddSiteBtn" style="padding:0.4rem 0.8rem; font-size:0.8rem; border-radius:6px;"><i data-lucide="plus" style="width:14px; display:inline-block; vertical-align:middle;"></i> Add Site</button>
+          </div>
+          
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;" id="deploymentsTable">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border-color); text-align:left; color:var(--text-muted);">
+                  <th style="padding:0.75rem 0.5rem;">Client Name</th>
+                  <th style="padding:0.75rem 0.5rem;">Location</th>
+                  <th style="padding:0.75rem 0.5rem;">Devices</th>
+                  <th style="padding:0.75rem 0.5rem;">Progress</th>
+                  <th style="padding:0.75rem 0.5rem; text-align:right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border-color);" class="site-row">
+                  <td style="padding:0.75rem 0.5rem; font-weight:600;">David Miller</td>
+                  <td style="padding:0.75rem 0.5rem; color:var(--text-muted);">Seattle Residence Hub</td>
+                  <td style="padding:0.75rem 0.5rem;">12</td>
+                  <td style="padding:0.75rem 0.5rem; width:120px;">
+                    <div style="width:100%; height:6px; background-color:var(--border-color); border-radius:3px; overflow:hidden;">
+                      <div style="width:80%; height:100%; background-color:#10B981;" class="deployment-bar" data-progress="80%"></div>
+                    </div>
+                  </td>
+                  <td style="padding:0.75rem 0.5rem; text-align:right;"><button class="btn btn-secondary expand-site-btn" style="padding:0.25rem 0.5rem; font-size:0.75rem; border-radius:4px;">View Nodes</button></td>
+                </tr>
+                <tr class="expandable-details-row" style="background-color: var(--bg-light); display:none;">
+                  <td colspan="5" style="padding:1rem;">
+                    <div class="expandable-details" style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem;">
+                      <h5 style="font-weight:700;">Deployed Gateway Nodes:</h5>
+                      <div class="responsive-grid-3" style="gap:1rem;">
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Main Switch Board</strong><br>MAC: <code>00:1A:2B:3C:4D:5E</code><br>RSSI: <span style="color:#10B981; font-weight:600;">-52dBm</span>
+                        </div>
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Aura Bulb 01</strong><br>MAC: <code>00:1A:2B:3C:4D:5F</code><br>RSSI: <span style="color:#10B981; font-weight:600;">-61dBm</span>
+                        </div>
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Sentinel Lock</strong><br>MAC: <code>00:1A:2B:3C:4D:60</code><br>RSSI: <span style="color:#F59E0B; font-weight:600;">-78dBm</span>
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary connection-check-btn" style="align-self:flex-start; margin-top:0.5rem; padding:0.3rem 0.6rem; font-size:0.75rem; border-radius:4px;">Run Node Connectivity Checklist</button>
+                      <div class="conn-checklist-results" style="margin-top:0.5rem; display:none; flex-direction:column; gap:0.25rem; font-weight:600;"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom:1px solid var(--border-color);" class="site-row">
+                  <td style="padding:0.75rem 0.5rem; font-weight:600;">Sarah Smith</td>
+                  <td style="padding:0.75rem 0.5rem; color:var(--text-muted);">Austin Office Hub</td>
+                  <td style="padding:0.75rem 0.5rem;">35</td>
+                  <td style="padding:0.75rem 0.5rem; width:120px;">
+                    <div style="width:100%; height:6px; background-color:var(--border-color); border-radius:3px; overflow:hidden;">
+                      <div style="width:45%; height:100%; background-color:var(--primary-color);" class="deployment-bar" data-progress="45%"></div>
+                    </div>
+                  </td>
+                  <td style="padding:0.75rem 0.5rem; text-align:right;"><button class="btn btn-secondary expand-site-btn" style="padding:0.25rem 0.5rem; font-size:0.75rem; border-radius:4px;">View Nodes</button></td>
+                </tr>
+                <tr class="expandable-details-row" style="background-color: var(--bg-light); display:none;">
+                  <td colspan="5" style="padding:1rem;">
+                    <div class="expandable-details" style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem;">
+                      <h5 style="font-weight:700;">Deployed Gateway Nodes:</h5>
+                      <div class="responsive-grid-3" style="gap:1rem;">
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Main Controller Unit</strong><br>MAC: <code>00:1A:2B:3C:9E:1F</code><br>RSSI: <span style="color:#10B981; font-weight:600;">-48dBm</span>
+                        </div>
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Office Ceiling AC Node</strong><br>MAC: <code>00:1A:2B:3C:9E:20</code><br>RSSI: <span style="color:#EF4444; font-weight:600;">-85dBm</span>
+                        </div>
+                        <div style="background:#fff; padding:0.75rem; border:1px solid var(--border-color); border-radius:4px;">
+                          <strong>Security CCTV Gate</strong><br>MAC: <code>00:1A:2B:3C:9E:21</code><br>RSSI: <span style="color:#10B981; font-weight:600;">-56dBm</span>
+                        </div>
+                      </div>
+                      <button class="btn btn-secondary connection-check-btn" style="align-self:flex-start; margin-top:0.5rem; padding:0.3rem 0.6rem; font-size:0.75rem; border-radius:4px;">Run Node Connectivity Checklist</button>
+                      <div class="conn-checklist-results" style="margin-top:0.5rem; display:none; flex-direction:column; gap:0.25rem; font-weight:600;"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD SITE MODAL OVERLAY -->
+  <div id="addSiteModalOverlay" class="modal-overlay">
+    <div class="modal-box">
+      <div style="padding:1.25rem 1.5rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; background-color:var(--bg-light);">
+        <h3 style="font-weight:700; font-size:1.1rem; color:var(--dark-color);"><i data-lucide="plus-circle" style="width:18px; display:inline-block; vertical-align:middle; margin-right:4px;"></i> Initialize Site Deployment</h3>
+        <button id="closeAddSiteBtn" style="background:none; border:none; cursor:pointer; font-size:1.25rem; color:var(--text-muted);"><i data-lucide="x"></i></button>
+      </div>
+      
+      <form id="newDeploymentForm" style="padding:1.5rem;">
+        <div class="form-group" style="margin-bottom:1.25rem;">
+          <label class="form-label">Client Full Name *</label>
+          <input type="text" class="form-control" id="deployClient" placeholder="e.g. Richard Hendricks" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.25rem;">
+          <label class="form-label">Site Address *</label>
+          <input type="text" class="form-control" id="deployAddr" placeholder="e.g. Silicon Valley Hub" required>
+        </div>
+
+        <div class="responsive-grid-2" style="margin-bottom:1.5rem;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Device Count *</label>
+            <input type="number" class="form-control" id="deployDevices" placeholder="15" required>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Plan Type</label>
+            <select class="form-control" id="deployPlan">
+              <option value="Basic">Basic</option>
+              <option value="Premium" selected>Premium</option>
+              <option value="Enterprise">Enterprise</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; border-radius:6px;">Initialize Site Pipeline</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredEmail = localStorage.getItem('stackly_user_email') || 'installer@stackly.com';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      
+      if (userDisplay) userDisplay.innerText = registeredEmail;
+      if (avatarName) {
+        const initials = registeredEmail.split('@')[0].substring(0,2).toUpperCase();
+        avatarName.innerText = initials || 'IN';
+      }
+
+      // Progress bars animation on load
+      const animateProgressBars = () => {
+        const bars = document.querySelectorAll('.deployment-bar');
+        bars.forEach(bar => {
+          const target = bar.getAttribute('data-progress');
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.transition = 'width 1s cubic-bezier(0.4, 0, 0.2, 1)';
+            bar.style.width = target;
+          }, 100);
+        });
+      };
+      animateProgressBars();
+
+      // Expandable site rows
+      const expandBtns = document.querySelectorAll('.expand-site-btn');
+      expandBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = btn.closest('.site-row');
+          const nextRow = row.nextElementSibling;
+          if (nextRow && nextRow.classList.contains('expandable-details-row')) {
+            const detailsDiv = nextRow.querySelector('.expandable-details');
+            if (nextRow.style.display === 'none') {
+              nextRow.style.display = 'table-row';
+              setTimeout(() => {
+                detailsDiv.classList.add('open');
+                btn.innerText = 'Hide Nodes';
+              }, 10);
+            } else {
+              detailsDiv.classList.remove('open');
+              btn.innerText = 'View Nodes';
+              setTimeout(() => {
+                nextRow.style.display = 'none';
+              }, 400);
+            }
+          }
+        });
+      });
+
+      // Connection Checklist checklist simulator
+      const checklistBtns = document.querySelectorAll('.connection-check-btn');
+      checklistBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const resultsDiv = btn.nextElementSibling;
+          resultsDiv.style.display = 'flex';
+          resultsDiv.innerHTML = `
+            <div style="color:var(--text-muted); margin-bottom:0.25rem;"><i data-lucide="loader-2" class="spin-icon" style="width:12px; display:inline-block; vertical-align:middle; margin-right:4px;"></i> Pinging local router...</div>
+          `;
+          lucide.createIcons();
+          btn.disabled = true;
+
+          setTimeout(() => {
+            resultsDiv.innerHTML += `
+              <div style="color:#10B981; margin-bottom:0.25rem;"><i data-lucide="check" style="width:12px; display:inline-block; vertical-align:middle; margin-right:4px;"></i> Router connectivity OK.</div>
+              <div style="color:var(--text-muted); margin-bottom:0.25rem;"><i data-lucide="loader-2" class="spin-icon" style="width:12px; display:inline-block; vertical-align:middle; margin-right:4px;"></i> Fetching gateway RSSI...</div>
+            `;
+            lucide.createIcons();
+            
+            setTimeout(() => {
+              resultsDiv.innerHTML += `
+                <div style="color:#10B981; margin-bottom:0.25rem;"><i data-lucide="check" style="width:12px; display:inline-block; vertical-align:middle; margin-right:4px;"></i> Gateways online: -52dBm.</div>
+              `;
+              lucide.createIcons();
+              btn.disabled = false;
+              showToast("Connection audit complete.");
+            }, 1000);
+          }, 800);
+        });
+      });
+
+      // Add Site modal open
+      const openAddSiteBtn = document.getElementById('openAddSiteBtn');
+      const closeAddSiteBtn = document.getElementById('closeAddSiteBtn');
+      const addSiteModalOverlay = document.getElementById('addSiteModalOverlay');
+
+      if (openAddSiteBtn && addSiteModalOverlay) {
+        openAddSiteBtn.addEventListener('click', () => {
+          addSiteModalOverlay.classList.add('open');
+        });
+      }
+      if (closeAddSiteBtn && addSiteModalOverlay) {
+        closeAddSiteBtn.addEventListener('click', () => {
+          addSiteModalOverlay.classList.remove('open');
+        });
+      }
+
+      // Add Site Form submission handler
+      const deployForm = document.getElementById('newDeploymentForm');
+      let activeSitesCount = 144;
+
+      if (deployForm) {
+        deployForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const client = document.getElementById('deployClient').value;
+          const addr = document.getElementById('deployAddr').value;
+          const devices = document.getElementById('deployDevices').value;
+          
+          const tableBody = document.querySelector('#deploymentsTable tbody');
+          if (tableBody) {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid var(--border-color)';
+            row.className = 'site-row';
+            row.innerHTML = `
+              <td style="padding:0.75rem 0.5rem; font-weight:600;">${client}</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-muted);">${addr}</td>
+              <td style="padding:0.75rem 0.5rem;">${devices}</td>
+              <td style="padding:0.75rem 0.5rem; width:120px;">
+                <div style="width:100%; height:6px; background-color:var(--border-color); border-radius:3px; overflow:hidden;">
+                  <div style="width:15%; height:100%; background-color:var(--primary-color);" class="deployment-bar" data-progress="15%"></div>
+                </div>
+              </td>
+              <td style="padding:0.75rem 0.5rem; text-align:right;"><button class="btn btn-secondary expand-site-btn" style="padding:0.25rem 0.5rem; font-size:0.75rem; border-radius:4px;">View Nodes</button></td>
+            `;
+            tableBody.appendChild(row);
+          }
+
+          activeSitesCount++;
+          document.getElementById('statsSites').innerText = `${activeSitesCount} Sites`;
+          addSiteModalOverlay.classList.remove('open');
+          deployForm.reset();
+          showToast(`Site initialized: ${client}`);
+        });
+      }
+
+      // Load assigned site if any was assigned in the overview page
+      const loadAssignedSites = () => {
+        let assignedSites = JSON.parse(localStorage.getItem('stackly_assigned_sites') || '[]');
+        if (assignedSites.length > 0) {
+          const tableBody = document.querySelector('#deploymentsTable tbody');
+          assignedSites.forEach(site => {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid var(--border-color)';
+            row.className = 'site-row';
+            row.innerHTML = `
+              <td style="padding:0.75rem 0.5rem; font-weight:600;">${site.client}</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-muted);">${site.addr}</td>
+              <td style="padding:0.75rem 0.5rem;">${site.devices}</td>
+              <td style="padding:0.75rem 0.5rem; width:120px;">
+                <div style="width:100%; height:6px; background-color:var(--border-color); border-radius:3px; overflow:hidden;">
+                  <div style="width:15%; height:100%; background-color:var(--primary-color);" class="deployment-bar" data-progress="15%"></div>
+                </div>
+              </td>
+              <td style="padding:0.75rem 0.5rem; text-align:right;"><button class="btn btn-secondary expand-site-btn" style="padding:0.25rem 0.5rem; font-size:0.75rem; border-radius:4px;">View Nodes</button></td>
+            `;
+            tableBody.appendChild(row);
+          });
+          // Clear storage so we don't repeat them
+          localStorage.removeItem('stackly_assigned_sites');
+        }
+      };
+      loadAssignedSites();
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

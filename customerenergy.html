@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Analytics | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="customerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDevices">
+          <a href="customerdevices.html"><i data-lucide="smartphone"></i> Connected Devices</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuSecurity">
+          <a href="customersecurity.html"><i data-lucide="shield"></i> Security Feeds</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuEnergy">
+          <a href="customerenergy.html"><i data-lucide="leaf"></i> Energy Analytics</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Energy Analytics</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Monitor real-time consumption stats and solar metrics.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName">HO</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">admin@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon"><i data-lucide="thermometer"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Inside Temp</h3>
+            <div class="dashboard-stat-value">22.4°C</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="zap"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Power Usage Today</h3>
+            <div class="dashboard-stat-value">12.8 kWh</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="smartphone"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Devices</h3>
+            <div class="dashboard-stat-value">18 / 22</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEE2E2; color:#DC2626;"><i data-lucide="shield"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Security</h3>
+            <div class="dashboard-stat-value">Armed (Home)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 4: ENERGY ANALYTICS -->
+      <div id="viewEnergy" class="dashboard-view fade-in active">
+        <div class="dashboard-grid">
+          <!-- Graph Panel -->
+          <div class="dashboard-panel reveal-left">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Weekly Power Consumption (kWh)</h2>
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">June 09 - June 15</span>
+            </div>
+            <!-- Dynamic Canvas Chart -->
+            <div style="position:relative; width:100%; display:flex; justify-content:center; align-items:center; height:260px; margin-top:1rem;">
+              <canvas id="energyChart" width="550" height="250" style="width:100%; height:250px; max-width:550px; display:block;"></canvas>
+            </div>
+          </div>
+
+          <!-- Gauges Breakdowns -->
+          <div class="dashboard-panel reveal-right">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Energy Consumption Analytics</h2>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:1.5rem; margin-top:0.5rem;">
+              <!-- Item 1 -->
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.25rem;">
+                  <span style="font-weight:600;">HVAC & Climate Control</span>
+                  <span style="color:var(--text-muted);">45% (5.7 kWh)</span>
+                </div>
+                <div style="width:100%; height:8px; background-color:var(--border-color); border-radius:4px; overflow:hidden;">
+                  <div style="width:45%; height:100%; background-color:#FF6B35;"></div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.25rem;">
+                  <span style="font-weight:600;">Appliances (Fridge, TV)</span>
+                  <span style="color:var(--text-muted);">35% (4.5 kWh)</span>
+                </div>
+                <div style="width:100%; height:8px; background-color:var(--border-color); border-radius:4px; overflow:hidden;">
+                  <div style="width:35%; height:100%; background-color:var(--primary-color);"></div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.25rem;">
+                  <span style="font-weight:600;">Lighting & Ambient</span>
+                  <span style="color:var(--text-muted);">20% (2.6 kWh)</span>
+                </div>
+                <div style="width:100%; height:8px; background-color:var(--border-color); border-radius:4px; overflow:hidden;">
+                  <div style="width:20%; height:100%; background-color:#10B981;"></div>
+                </div>
+              </div>
+
+              <!-- Eco Metric summary card -->
+              <div style="background-color: var(--primary-light); padding:1rem; border-radius:6px; display:flex; align-items:center; gap:0.75rem; border: 1px dashed var(--primary-color);">
+                <i data-lucide="leaf" style="color:var(--primary-color); flex-shrink:0;"></i>
+                <p style="font-size:0.8rem; color:var(--primary-color); font-weight:600; line-height:1.4;">
+                  Eco Saver Mode has trimmed active wattage load by <strong>2.1 kWh</strong> today! Keep it armed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredName = localStorage.getItem('stackly_registered_name') || 'Home Owner';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const welcomeUser = document.getElementById('welcomeUser');
+      
+      if (userDisplay) userDisplay.innerText = registeredName;
+      if (avatarName) {
+        const initials = registeredName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+        avatarName.innerText = initials || 'HO';
+      }
+
+      // Draw energy chart
+      const drawEnergyChart = () => {
+        const canvas = document.getElementById('energyChart');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const days = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'];
+        const values = [12.4, 15.2, 10.8, 14.2, 18.0, 11.5, 12.8]; // kWh
+        const targetHeights = values.map(val => val * 10);
+        let currentHeights = targetHeights.map(() => 0);
+
+        const chartWidth = canvas.width - 60;
+        const chartHeight = canvas.height - 40;
+        const barWidth = 40;
+        const spacing = (chartWidth - (barWidth * days.length)) / (days.length + 1);
+
+        ctx.strokeStyle = '#F3F4F6';
+        ctx.lineWidth = 1;
+
+        // Draw Y Axis grid markings
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = '#9CA3AF';
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= 20; i += 5) {
+          const y = chartHeight - (i * 10);
+          ctx.fillText(`${i}`, 30, y + 4);
+          ctx.beginPath();
+          ctx.moveTo(40, y);
+          ctx.lineTo(canvas.width - 20, y);
+          ctx.stroke();
+        }
+
+        // Base line
+        ctx.strokeStyle = '#E5E7EB';
+        ctx.beginPath();
+        ctx.moveTo(40, chartHeight);
+        ctx.lineTo(canvas.width - 20, chartHeight);
+        ctx.stroke();
+
+        const animate = () => {
+          let done = true;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          ctx.strokeStyle = '#F3F4F6';
+          ctx.textAlign = 'right';
+          for (let i = 0; i <= 20; i += 5) {
+            const y = chartHeight - (i * 10);
+            ctx.fillText(`${i}`, 30, y + 4);
+            ctx.beginPath();
+            ctx.moveTo(40, y);
+            ctx.lineTo(canvas.width - 20, y);
+            ctx.stroke();
+          }
+
+          ctx.strokeStyle = '#E5E7EB';
+          ctx.beginPath();
+          ctx.moveTo(40, chartHeight);
+          ctx.lineTo(canvas.width - 20, chartHeight);
+          ctx.stroke();
+
+          ctx.textAlign = 'center';
+          for (let k = 0; k < days.length; k++) {
+            const x = 40 + spacing + k * (barWidth + spacing);
+            
+            if (currentHeights[k] < targetHeights[k]) {
+              currentHeights[k] += 2.5;
+              if (currentHeights[k] > targetHeights[k]) currentHeights[k] = targetHeights[k];
+              done = false;
+            }
+
+            const h = currentHeights[k];
+            const y = chartHeight - h;
+
+            const gradient = ctx.createLinearGradient(x, y, x, chartHeight);
+            gradient.addColorStop(0, '#007FC5');
+            gradient.addColorStop(1, 'rgba(0,127,197,0.3)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.roundRect(x, y, barWidth, h, [4, 4, 0, 0]);
+            ctx.fill();
+
+            ctx.fillStyle = '#111827';
+            ctx.font = 'bold 10px Inter, sans-serif';
+            ctx.fillText(`${values[k]}`, x + barWidth/2, y - 6);
+
+            ctx.fillStyle = '#9CA3AF';
+            ctx.font = '11px Inter, sans-serif';
+            ctx.fillText(days[k], x + barWidth/2, chartHeight + 18);
+          }
+
+          if (!done) {
+            requestAnimationFrame(animate);
+          }
+        };
+
+        animate();
+      };
+      
+      // Run chart drawing on tab load
+      drawEnergyChart();
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homeowner Dashboard | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item active" id="menuOverview">
+          <a href="customerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDevices">
+          <a href="customerdevices.html"><i data-lucide="smartphone"></i> Connected Devices</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuSecurity">
+          <a href="customersecurity.html"><i data-lucide="shield"></i> Security Feeds</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuEnergy">
+          <a href="customerenergy.html"><i data-lucide="leaf"></i> Energy Analytics</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Welcome Back, Home Owner</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">All systems are active and running optimally.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName">HO</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">admin@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card animate-stats">
+          <div class="dashboard-stat-icon"><i data-lucide="thermometer"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Inside Temp</h3>
+            <div class="dashboard-stat-value">22.4°C</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="zap"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Power Usage Today</h3>
+            <div class="dashboard-stat-value">12.8 kWh</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="smartphone"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Devices</h3>
+            <div class="dashboard-stat-value" id="activeDevicesCount">18 / 22</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEE2E2; color:#DC2626;"><i data-lucide="shield"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Security</h3>
+            <div class="dashboard-stat-value">Armed (Home)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 1: OVERVIEW -->
+      <div id="viewOverview" class="dashboard-view fade-in active">
+        <div class="dashboard-grid">
+          <!-- Quick Controls Panel -->
+          <div class="dashboard-panel reveal-left">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Quick Controls</h2>
+            </div>
+
+            <div class="dashboard-controls">
+              <!-- Item 1 -->
+              <div class="control-item active">
+                <div class="control-info">
+                  <i data-lucide="lightbulb" class="control-icon" style="color: var(--primary-color);"></i>
+                  <span class="control-label">Living Room Light 1</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" checked class="device-toggle" data-device="Living Room Light 1">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="control-item active">
+                <div class="control-info">
+                  <i data-lucide="lightbulb" class="control-icon" style="color: var(--primary-color);"></i>
+                  <span class="control-label">Hallway Pendant</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" checked class="device-toggle" data-device="Hallway Pendant">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="control-item">
+                <div class="control-info">
+                  <i data-lucide="thermometer" class="control-icon"></i>
+                  <span class="control-label">Master Bed HVAC</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" class="device-toggle" data-device="Master Bed HVAC">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="control-item active">
+                <div class="control-info">
+                  <i data-lucide="tv" class="control-icon" style="color: var(--primary-color);"></i>
+                  <span class="control-label">Media Console Power</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" checked class="device-toggle" data-device="Media Console Power">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="control-item">
+                <div class="control-info">
+                  <i data-lucide="lock" class="control-icon"></i>
+                  <span class="control-label">Front Door Deadbolt</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" class="device-toggle" data-device="Front Door Deadbolt">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <!-- Item 6 -->
+              <div class="control-item active">
+                <div class="control-info">
+                  <i data-lucide="camera" class="control-icon" style="color: var(--primary-color);"></i>
+                  <span class="control-label">Backyard Cam Rec</span>
+                </div>
+                <label class="scenario-toggle">
+                  <input type="checkbox" checked class="device-toggle" data-device="Backyard Cam Rec">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Notifications -->
+          <div class="dashboard-panel reveal-right">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">System Status</h2>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:1.25rem;">
+              <div style="background-color: var(--bg-light); border-left: 4px solid var(--primary-color); padding: 1rem; border-radius: 4px;">
+                <h4 style="font-weight:600; font-size:0.9rem; margin-bottom:0.25rem;">Away Mode Scheduled</h4>
+                <p style="font-size:0.8rem; color:var(--text-muted);">System will arm at 09:00 AM based on calendar patterns.</p>
+              </div>
+
+              <div style="background-color: var(--bg-light); border-left: 4px solid #10B981; padding: 1rem; border-radius: 4px;">
+                <h4 style="font-weight:600; font-size:0.9rem; margin-bottom:0.25rem;">Energy Savings Warning</h4>
+                <p style="font-size:0.8rem; color:var(--text-muted);">Standby load detected on TV console. Shut off suggestion sent.</p>
+              </div>
+
+              <div style="background-color: var(--bg-light); border-left: 4px solid #F59E0B; padding: 1rem; border-radius: 4px;">
+                <h4 style="font-weight:600; font-size:0.9rem; margin-bottom:0.25rem;">Front Gate Camera Alert</h4>
+                <p style="font-size:0.8rem; color:var(--text-muted);">Package delivery vehicle identified at 12:44 PM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details from registration session
+      const registeredName = localStorage.getItem('stackly_registered_name') || 'Home Owner';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const welcomeUser = document.getElementById('welcomeUser');
+      
+      if (userDisplay) userDisplay.innerText = registeredName;
+      if (welcomeUser) welcomeUser.innerText = `Welcome Back, ${registeredName}`;
+      if (avatarName) {
+        const initials = registeredName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+        avatarName.innerText = initials || 'HO';
+      }
+
+      // Quick Device Toggles
+      const devToggles = document.querySelectorAll('.device-toggle');
+      devToggles.forEach(toggle => {
+        toggle.addEventListener('change', () => {
+          const item = toggle.closest('.control-item');
+          const devName = toggle.getAttribute('data-device');
+          if (toggle.checked) {
+            item.classList.add('active');
+            item.querySelector('.control-icon').style.color = 'var(--primary-color)';
+            showToast(`${devName} turned ON`);
+          } else {
+            item.classList.remove('active');
+            item.querySelector('.control-icon').style.color = '';
+            showToast(`${devName} turned OFF`);
+          }
+          updateActiveDevicesCount();
+        });
+      });
+
+      const updateActiveDevicesCount = () => {
+        let active = 0;
+        devToggles.forEach(t => { if (t.checked) active++; });
+        const counterDisplay = document.getElementById('activeDevicesCount');
+        if (counterDisplay) {
+          counterDisplay.innerText = `${active + 13} / 22`; // Adjust offset mock
+        }
+      };
+      updateActiveDevicesCount();
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

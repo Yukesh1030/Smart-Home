@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installer Profile | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* 3D Spinning Badges for Profile */
+    .spinning-badge {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .spinning-badge-inner {
+      position: relative;
+      width: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .spinning-badge:hover .spinning-badge-inner {
+      transform: rotateY(180deg);
+    }
+    .spinning-badge-front, .spinning-badge-back {
+      backface-visibility: hidden;
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .spinning-badge-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotateY(180deg);
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="sellerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDeployments">
+          <a href="siteinstallations.html"><i data-lucide="wrench"></i> Site Installations</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuAlerts">
+          <a href="systemdiagnostics.html"><i data-lucide="activity"></i> System Diagnostics</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuTickets">
+          <a href="servicetickets.html"><i data-lucide="clipboard-list"></i> Service Tickets</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuInventory">
+          <a href="inventorycontrol.html"><i data-lucide="package"></i> Inventory Control</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuProfile">
+          <a href="installerprofile.html"><i data-lucide="user"></i> Installer Profile</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Installer Profile</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Review assigned credentials and target completions.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName" style="background-color: #EF4444;">IN</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">installer@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color: var(--primary-light); color: var(--primary-color);"><i data-lucide="clipboard-list"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Pending Audits</h3>
+            <div class="dashboard-stat-value">2 Requests</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="check-circle-2"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Installs</h3>
+            <div class="dashboard-stat-value">144 Sites</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="activity"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Node Health</h3>
+            <div class="dashboard-stat-value">99.8% Online</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEF3C7; color:#D97706;"><i data-lucide="alert-triangle"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Warnings</h3>
+            <div class="dashboard-stat-value">2 Nodes Low Batt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW: PROFILE -->
+      <div id="viewProfile" class="dashboard-view fade-in active">
+        <div class="dashboard-grid">
+          <!-- Bio details card -->
+          <div class="dashboard-panel reveal-left">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Installer Profile Information</h2>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem;">
+              <div class="profile-header-flex" style="border-bottom:1px solid var(--border-color); padding-bottom:1.5rem;">
+                <div class="dashboard-user-avatar" style="width:70px; height:70px; font-size:2rem; background-color:#EF4444;">IN</div>
+                <div>
+                  <h3 style="font-weight:700; font-size:1.25rem; color:var(--dark-color);" id="profileName">installer@stackly.com</h3>
+                  <span class="scenario-action-badge" style="background-color:#EBF8FF; color:#0369A1;">Lead Field Engineer</span>
+                </div>
+              </div>
+              
+              <div class="responsive-grid-2">
+                <div>
+                  <h4 style="font-weight:600; font-size:0.9rem; color:var(--text-muted);">Assigned Service Region</h4>
+                  <p style="font-size:0.95rem; font-weight:600; color:var(--dark-color); margin-top:0.25rem;">Mumbai District Zone A</p>
+                </div>
+                <div>
+                  <h4 style="font-weight:600; font-size:0.9rem; color:var(--text-muted);">Total Deployments Completed</h4>
+                  <p style="font-size:0.95rem; font-weight:600; color:var(--dark-color); margin-top:0.25rem;">1,248 Nodes</p>
+                </div>
+              </div>
+
+              <!-- Monthly Target Progress -->
+              <div style="margin-top:1rem;">
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.25rem; font-weight:600;">
+                  <span>Monthly Site Targets Completed</span>
+                  <span>75% (15/20 Sites)</span>
+                </div>
+                <div style="width:100%; height:8px; background-color:var(--border-color); border-radius:4px; overflow:hidden;">
+                  <div style="width:75%; height:100%; background-color:#10B981;" class="target-bar" data-progress="75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Spinning Certifications Panel -->
+          <div class="dashboard-panel reveal-right">
+            <div class="dashboard-panel-header" style="margin-bottom:1.5rem;">
+              <h2 class="dashboard-panel-title">Certificates (Hover to Spin)</h2>
+            </div>
+            
+            <div class="responsive-grid-2">
+              <!-- Badge 1 -->
+              <div class="spinning-badge" style="height:120px;">
+                <div class="spinning-badge-inner" style="height:100%;">
+                  <div class="spinning-badge-front" style="background-color:var(--bg-light); border:1px solid var(--border-color); height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                    <i data-lucide="award" style="color:var(--primary-color); width:32px; height:32px; margin-bottom:0.5rem;"></i>
+                    <h4 style="font-size:0.85rem; font-weight:700;">Installer L2</h4>
+                  </div>
+                  <div class="spinning-badge-back">
+                    <span style="font-size:0.75rem; font-weight:700; text-align:center;">Verified by STACKLY Tech Board</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Badge 2 -->
+              <div class="spinning-badge" style="height:120px;">
+                <div class="spinning-badge-inner" style="height:100%;">
+                  <div class="spinning-badge-front" style="background-color:var(--bg-light); border:1px solid var(--border-color); height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                    <i data-lucide="radio" style="color:var(--primary-color); width:32px; height:32px; margin-bottom:0.5rem;"></i>
+                    <h4 style="font-size:0.85rem; font-weight:700;">Zigbee Certified</h4>
+                  </div>
+                  <div class="spinning-badge-back">
+                    <span style="font-size:0.75rem; font-weight:700; text-align:center;">Advanced Mesh Net Specialist</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredEmail = localStorage.getItem('stackly_user_email') || 'installer@stackly.com';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const profileName = document.getElementById('profileName');
+      
+      if (userDisplay) userDisplay.innerText = registeredEmail;
+      if (profileName) profileName.innerText = registeredEmail;
+      if (avatarName) {
+        const initials = registeredEmail.split('@')[0].substring(0,2).toUpperCase();
+        avatarName.innerText = initials || 'IN';
+      }
+
+      // Profile Target Bar Animation
+      const animateTargetBars = () => {
+        const targetBar = document.querySelector('.target-bar');
+        if (targetBar) {
+          const targetVal = targetBar.getAttribute('data-progress');
+          targetBar.style.width = '0%';
+          setTimeout(() => {
+            targetBar.style.transition = 'width 1s cubic-bezier(0.4, 0, 0.2, 1)';
+            targetBar.style.width = targetVal;
+          }, 100);
+        }
+      };
+      animateTargetBars();
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

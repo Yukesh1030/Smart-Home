@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY | Smart Home Solutions</title>
+  <meta name="description" content="Experience premium home automation with STACKLY. Connect, monitor, and automate your smart living devices with ease.">
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. Header / Navbar -->
+  <header class="header" id="mainHeader">
+    <div class="container navbar">
+      <a href="index.html" class="brand" id="brandLogo">
+        STACKLY<span class="brand-accent">.</span>
+      </a>
+      
+      <button class="menu-toggle" aria-label="Toggle Navigation" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="samartdevice.html">Smart Devices</a></li>
+        <li><a href="automation.html">Automation</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="mobile-login-btn" style="display: none;"><a href="login.html" class="btn btn-primary">Login</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary" id="loginBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Hero Section -->
+  <section class="hero" id="heroSection" style="background-image: url('assets/cover_image.webp');">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content reveal-left">
+      <span class="section-tag" style="color: #00D2C4;">Welcome to the Future</span>
+      <h1 class="hero-title">Experience Smarter Living with STACKLY</h1>
+      <p class="hero-desc">Control your lighting, climate, appliances, and security from anywhere in the world. Save energy, enhance security, and live in absolute comfort.</p>
+      <div class="hero-btns">
+        <a href="samartdevice.html" class="btn btn-white" id="heroCtaPrimary">Explore Devices</a>
+        <a href="contact.html" class="btn btn-secondary" style="color: white; border-color: white;" id="heroCtaSecondary">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. About Smart Home Section -->
+  <section class="about" id="aboutSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content reveal-left">
+          <span class="section-tag">About Smart Home</span>
+          <h2 class="section-title">An Intelligent Ecosystem Designed Around Your Life</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">STACKLY brings all your connected home appliances under a single unified dashboard, allowing them to collaborate, communicate, and react to your daily habits.</p>
+          <p style="margin-bottom: 2rem; color: var(--text-muted);">From turning off active appliances when you leave, to setting the perfect morning ambiance before your alarm rings, STACKLY redefines convenience by automating life's minor details.</p>
+          
+          <div class="about-features">
+            <div class="about-feature-card">
+              <div class="about-feature-icon">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3 class="about-feature-title">Single App Control</h3>
+              <p class="about-feature-desc">Manage every aspect of your home environment through our unified, responsive interface.</p>
+            </div>
+            <div class="about-feature-card">
+              <div class="about-feature-icon">
+                <i data-lucide="leaf"></i>
+              </div>
+              <h3 class="about-feature-title">Eco Friendly</h3>
+              <p class="about-feature-desc">Automated settings that optimize energy usage, cutting costs and carbon footprint.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-img-box reveal-right">
+          <img src="assets/devices.webp" alt="Smart Home Ecosystem" style="width: 100%; object-fit: cover; height: 450px;">
+          <div class="about-img-overlay">
+            <h3 style="color: white; font-size: 1.5rem; margin-bottom: 0.5rem;">Total Home Control</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Enjoy a home that anticipates your needs and keeps you safe, 24/7.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Featured Devices Section -->
+  <section class="devices section-bg-light" id="featuredDevicesSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Featured Devices</span>
+        <h2 class="section-title">Popular Connected Solutions</h2>
+        <p class="section-desc">Explore our top-selling devices designed to bring luxury and intelligence to your everyday home layout.</p>
+      </div>
+
+      <div class="device-grid">
+        <!-- Device 1 -->
+        <div class="device-card reveal-up">
+          <div class="device-card-img">
+            <i data-lucide="lightbulb"></i>
+            <span class="device-badge">Best Seller</span>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Lighting</div>
+            <h3 class="device-card-name">Aura Smart LED Bulb</h3>
+            <p class="device-card-desc">16 million colors, voice assistant control, and custom schedules. Fits into standard sockets.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$29.99</span>
+              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Device 2 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="device-card-img">
+            <i data-lucide="thermometer"></i>
+            <span class="device-badge" style="background-color: #10B981;">Eco Saver</span>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Climate</div>
+            <h3 class="device-card-name">Nestle Smart Thermostat</h3>
+            <p class="device-card-desc">Self-learning temperature control that adapts to your routine and reduces energy bill by 23%.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$189.99</span>
+              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Device 3 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.2s;">
+          <div class="device-card-img">
+            <i data-lucide="shield-check"></i>
+            <span class="device-badge" style="background-color: #EF4444;">High Security</span>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Security</div>
+            <h3 class="device-card-name">Sentinel Smart Door Lock</h3>
+            <p class="device-card-desc">Keyless entry, biometric fingerprint scanner, remote access logging, and encrypted backups.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$249.99</span>
+              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Key Features Section -->
+  <section class="features" id="keyFeaturesSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Key Features</span>
+        <h2 class="section-title">Engineered For Premium Comfort</h2>
+        <p class="section-desc">STACKLY platforms deliver advanced home control features without sacrificing simplicity.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal-up">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="mic"></i>
+          </div>
+          <h3 class="feature-title">Voice Control</h3>
+          <p class="feature-desc">Integrates seamlessly with Alexa, Google Home, and Apple Siri. Manage devices using simple spoken phrases.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="globe"></i>
+          </div>
+          <h3 class="feature-title">Remote Access</h3>
+          <p class="feature-desc">Monitor security streams, adjust thermostats, and check locks from anywhere in the world via cellular connection.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="zap"></i>
+          </div>
+          <h3 class="feature-title">Automated Power Saving</h3>
+          <p class="feature-desc">Devices enter low-energy standby states when unoccupied, saving resources without active monitoring.</p>
+        </div>
+
+        <div class="feature-card reveal-up" style="transition-delay: 0.3s;">
+          <div class="feature-icon-wrapper">
+            <i data-lucide="bell"></i>
+          </div>
+          <h3 class="feature-title">Instant Alerts</h3>
+          <p class="feature-desc">Get notified immediately on your phone when motion is detected, locks are triggered, or anomalies occur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. How It Works Section -->
+  <section class="how-it-works section-bg-light" id="howItWorksSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Getting Started in 3 Simple Steps</h2>
+        <p class="section-desc">Experience a fully automated living space in no time at all. Here is how our integration process functions.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal-up">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Choose Your Devices</h3>
+          <p class="step-desc">Select from our catalog of smart lighting, appliances, security modules, and climate control hubs.</p>
+        </div>
+
+        <div class="step-card reveal-up" style="transition-delay: 0.15s;">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Quick Installation</h3>
+          <p class="step-desc">Our certified engineers configure and install all hardware units in your home with zero hassle.</p>
+        </div>
+
+        <div class="step-card reveal-up" style="transition-delay: 0.3s;">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Automated Control</h3>
+          <p class="step-desc">Launch the STACKLY dashboard, set your custom routines, and enjoy smart convenience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Customer Testimonials Section -->
+  <section class="testimonials" id="testimonialsSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Customer Testimonials</span>
+        <h2 class="section-title">Loved by Thousands</h2>
+        <p class="section-desc">Here is what our homeowners have to say about upgrading their living spaces with STACKLY solutions.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Review 1 -->
+        <div class="testimonial-card reveal-up">
+          <div class="testimonial-rating">
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+          </div>
+          <p class="testimonial-text">"Installing STACKLY was the best decision for our home. The voice commands work instantly, and our electricity bill dropped by 18% in the first two months alone!"</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar">JD</div>
+            <div>
+              <h4 class="testimonial-name">John Doe</h4>
+              <p class="testimonial-title">Homeowner, New York</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="testimonial-rating">
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+          </div>
+          <p class="testimonial-text">"The security monitoring gives me complete peace of mind while traveling. The motion detection is smart enough to ignore our dog, so no false alarms."</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar">SS</div>
+            <div>
+              <h4 class="testimonial-name">Sarah Smith</h4>
+              <p class="testimonial-title">Business Owner, Austin</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card reveal-up" style="transition-delay: 0.2s;">
+          <div class="testimonial-rating">
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+            <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
+          </div>
+          <p class="testimonial-text">"Creating custom routines has made our mornings so smooth. The coffee machine starts and the blinds raise automatically. Premium luxury at its best."</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar">DM</div>
+            <div>
+              <h4 class="testimonial-name">David Miller</h4>
+              <p class="testimonial-title">Tech Engineer, Seattle</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Pricing Plans Section -->
+  <section class="pricing section-bg-light" id="pricingSection">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Pricing Plans</span>
+        <h2 class="section-title">Flexible Plans For Any Home</h2>
+        <p class="section-desc">Choose the perfect tier of automation and monitoring services for your household requirements.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan 1 -->
+        <div class="pricing-card reveal-up">
+          <h3 class="pricing-name">Basic</h3>
+          <div class="pricing-price">$9<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li><i data-lucide="check-circle-2"></i> Control up to 5 devices</li>
+            <li><i data-lucide="check-circle-2"></i> Voice assistant integration</li>
+            <li><i data-lucide="check-circle-2"></i> Remote access controls</li>
+            <li class="disabled"><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
+            <li class="disabled"><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="pricing-card featured reveal-up" style="transition-delay: 0.1s;">
+          <div class="pricing-ribbon">Most Popular</div>
+          <h3 class="pricing-name">Premium</h3>
+          <div class="pricing-price">$29<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li><i data-lucide="check-circle-2"></i> Control up to 25 devices</li>
+            <li><i data-lucide="check-circle-2"></i> Voice assistant integration</li>
+            <li><i data-lucide="check-circle-2"></i> Remote access controls</li>
+            <li><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
+            <li class="disabled"><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="pricing-card reveal-up" style="transition-delay: 0.2s;">
+          <h3 class="pricing-name">Enterprise</h3>
+          <div class="pricing-price">$79<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li><i data-lucide="check-circle-2"></i> Unlimited device controls</li>
+            <li><i data-lucide="check-circle-2"></i> Voice assistant integration</li>
+            <li><i data-lucide="check-circle-2"></i> Remote access controls</li>
+            <li><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
+            <li><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Call To Action (CTA) Section -->
+  <section class="cta reveal-up" id="ctaSection">
+    <div class="container cta-content">
+      <h2 class="cta-title">Get Started Today</h2>
+      <p class="cta-desc">Join thousands of families living in the luxury of an automated smart home. Connect with our technical engineers for a free site assessment.</p>
+      <a href="contact.html" class="btn btn-white btn-lg" id="ctaButton">Request Free Assessment</a>
+    </div>
+  </section>
+
+  <!-- 10. Footer Section -->
+  <footer class="footer" id="mainFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-box">
+          <div class="footer-brand">STACKLY<span>.</span></div>
+          <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
+          <div class="footer-socials">
+            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="samartdevice.html">Smart Devices</a></li>
+            <li><a href="automation.html">Home Automation</a></li>
+            <li><a href="security.html">Home Security</a></li>
+            <li><a href="404.html">Energy Analytics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ Help Center</a></li>
+            <li><a href="404.html">Technical Portal</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Corporate Info</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Tata Power EZHome District Hub, Suite 350, Mumbai, MH, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>+1 (800) 555-0199</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <span>support@stackly.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 STACKLY Smart Home. All Rights Reserved. Inspired by Tata Power EZHome.</p>
+        <p>
+          <a href="404.html" style="margin-right: 1rem;">Terms of Service</a>
+          <a href="404.html">Sitemap</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>

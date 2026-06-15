@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Feeds | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="customerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDevices">
+          <a href="customerdevices.html"><i data-lucide="smartphone"></i> Connected Devices</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuSecurity">
+          <a href="customersecurity.html"><i data-lucide="shield"></i> Security Feeds</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuEnergy">
+          <a href="customerenergy.html"><i data-lucide="leaf"></i> Energy Analytics</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Security Feeds</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Review active security grids and log streams.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName">HO</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">admin@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stats-card" style="display:contents;">
+          <!-- Inline cards since CSS variables layout is used -->
+          <div class="dashboard-stat-card">
+            <div class="dashboard-stat-icon"><i data-lucide="thermometer"></i></div>
+            <div class="dashboard-stat-info">
+              <h3>Inside Temp</h3>
+              <div class="dashboard-stat-value">22.4°C</div>
+            </div>
+          </div>
+
+          <div class="dashboard-stat-card">
+            <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="zap"></i></div>
+            <div class="dashboard-stat-info">
+              <h3>Power Usage Today</h3>
+              <div class="dashboard-stat-value">12.8 kWh</div>
+            </div>
+          </div>
+
+          <div class="dashboard-stat-card">
+            <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="smartphone"></i></div>
+            <div class="dashboard-stat-info">
+              <h3>Active Devices</h3>
+              <div class="dashboard-stat-value">18 / 22</div>
+            </div>
+          </div>
+
+          <div class="dashboard-stat-card" style="border-color:#EF4444; box-shadow:0 0 10px rgba(239,68,68,0.05);">
+            <div class="dashboard-stat-icon" style="background-color:#FEE2E2; color:#DC2626;"><i data-lucide="shield"></i></div>
+            <div class="dashboard-stat-info">
+              <h3>Security</h3>
+              <div class="dashboard-stat-value">Armed (Home)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 3: SECURITY FEEDS -->
+      <div id="viewSecurity" class="dashboard-view fade-in active">
+        <div class="dashboard-grid">
+          <!-- CCTV Grid Panel -->
+          <div class="dashboard-panel reveal-left">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Live Camera Streams</h2>
+            </div>
+            
+            <div class="responsive-grid-2" id="cctvGrid" style="gap:1rem;">
+              <!-- Cam 1 -->
+              <div style="background-color:#1E293B; border-radius:6px; overflow:hidden; position:relative; cursor:pointer;" class="cctv-feed-card" data-cam-name="FRONT ENTRY" data-cam-loc="Front Door Porch">
+                <div style="background-color:#1E293B; height:160px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                  <div style="position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:0.5rem; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px;">
+                    <span style="background:red; width:8px; height:8px; border-radius:50%; display:inline-block; animation: blink 1s infinite;"></span>
+                    <span style="color:white; font-size:0.7rem; font-weight:700;">REC</span>
+                  </div>
+                  <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; color:white; font-size:0.7rem;" class="live-clock">
+                    12:44:00 PM
+                  </div>
+                  <i data-lucide="video" style="width:36px; height:36px; opacity:0.3; color:white;"></i>
+                  <span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font-weight:600; opacity:0.8; font-size:0.85rem; pointer-events:none;">CAM 1 - FRONT ENTRY</span>
+                </div>
+              </div>
+
+              <!-- Cam 2 -->
+              <div style="background-color:#1E293B; border-radius:6px; overflow:hidden; position:relative; cursor:pointer;" class="cctv-feed-card" data-cam-name="BACKYARD POOL" data-cam-loc="Pool Deck Area">
+                <div style="background-color:#1E293B; height:160px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                  <div style="position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:0.5rem; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px;">
+                    <span style="background:red; width:8px; height:8px; border-radius:50%; display:inline-block; animation: blink 1s infinite;"></span>
+                    <span style="color:white; font-size:0.7rem; font-weight:700;">REC</span>
+                  </div>
+                  <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; color:white; font-size:0.7rem;" class="live-clock">
+                    12:44:00 PM
+                  </div>
+                  <i data-lucide="video" style="width:36px; height:36px; opacity:0.3; color:white;"></i>
+                  <span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font-weight:600; opacity:0.8; font-size:0.85rem; pointer-events:none;">CAM 2 - BACKYARD POOL</span>
+                </div>
+              </div>
+
+              <!-- Cam 3 -->
+              <div style="background-color:#1E293B; border-radius:6px; overflow:hidden; position:relative; cursor:pointer;" class="cctv-feed-card" data-cam-name="LIVING ROOM" data-cam-loc="Hall Interior Area">
+                <div style="background-color:#1E293B; height:160px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                  <div style="position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:0.5rem; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px;">
+                    <span style="background:red; width:8px; height:8px; border-radius:50%; display:inline-block; animation: blink 1s infinite;"></span>
+                    <span style="color:white; font-size:0.7rem; font-weight:700;">REC</span>
+                  </div>
+                  <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; color:white; font-size:0.7rem;" class="live-clock">
+                    12:44:00 PM
+                  </div>
+                  <i data-lucide="video" style="width:36px; height:36px; opacity:0.3; color:white;"></i>
+                  <span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font-weight:600; opacity:0.8; font-size:0.85rem; pointer-events:none;">CAM 3 - LIVING ROOM</span>
+                </div>
+              </div>
+
+              <!-- Cam 4 -->
+              <div style="background-color:#1E293B; border-radius:6px; overflow:hidden; position:relative; cursor:pointer;" class="cctv-feed-card" data-cam-name="GARAGE DRIVEWAY" data-cam-loc="Driveway Entrance">
+                <div style="background-color:#1E293B; height:160px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                  <div style="position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:0.5rem; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px;">
+                    <span style="background:#6B7280; width:8px; height:8px; border-radius:50%; display:inline-block;"></span>
+                    <span style="color:white; font-size:0.7rem; font-weight:700;">STDBY</span>
+                  </div>
+                  <div style="position:absolute; bottom:10px; right:10px; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; color:white; font-size:0.7rem;" class="live-clock">
+                    12:44:00 PM
+                  </div>
+                  <i data-lucide="video" style="width:36px; height:36px; opacity:0.3; color:white;"></i>
+                  <span style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:white; font-weight:600; opacity:0.8; font-size:0.85rem; pointer-events:none;">CAM 4 - GARAGE DRIVEWAY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Log Panel -->
+          <div class="dashboard-panel reveal-right">
+            <div class="dashboard-panel-header">
+              <h2 class="dashboard-panel-title">Recent Security Alerts</h2>
+            </div>
+            <div style="max-height: 330px; overflow-y: auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem;" id="securityLogsTable">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--border-color); text-align:left; color:var(--text-muted);">
+                    <th style="padding:0.75rem 0;">Time</th>
+                    <th style="padding:0.75rem 0;">Activity Log</th>
+                    <th style="padding:0.75rem 0; text-align:right;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:0.75rem 0; color:var(--text-muted);">14:15:30</td>
+                    <td style="padding:0.75rem 0; font-weight:600;">Front Door Unlocked by Pin</td>
+                    <td style="padding:0.75rem 0; text-align:right; color:#10B981;">Authorized</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:0.75rem 0; color:var(--text-muted);">13:50:12</td>
+                    <td style="padding:0.75rem 0; font-weight:600;">Motion Trigger: Backyard Fence</td>
+                    <td style="padding:0.75rem 0; text-align:right; color:#F59E0B;">Alerted</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:0.75rem 0; color:var(--text-muted);">12:30:44</td>
+                    <td style="padding:0.75rem 0; font-weight:600;">System armed in Home Mode</td>
+                    <td style="padding:0.75rem 0; text-align:right; color:var(--primary-color);">Armed</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--border-color);">
+                    <td style="padding:0.75rem 0; color:var(--text-muted);">09:12:05</td>
+                    <td style="padding:0.75rem 0; font-weight:600;">Garage Door Closed</td>
+                    <td style="padding:0.75rem 0; text-align:right; color:var(--text-muted);">Closed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- CCTV FEED FULL SCREEN MODAL -->
+  <div id="cctvModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(17,24,39,0.85); backdrop-filter:blur(8px); z-index:99999; justify-content:center; align-items:center; padding:1.5rem;">
+    <div style="background:var(--bg-white); border-radius:var(--radius-md); max-width:650px; width:100%; overflow:hidden; box-shadow:var(--shadow-xl); border:1px solid var(--border-color);" class="reveal-up">
+      <div style="padding:1.25rem 1.5rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; background-color:var(--bg-light);">
+        <div>
+          <h3 style="font-weight:700; font-size:1.15rem; color:var(--dark-color);" id="modalCamTitle">CAM 1 - FRONT ENTRY</h3>
+          <span style="font-size:0.75rem; color:var(--text-muted);" id="modalCamLoc">Front Door Porch</span>
+        </div>
+        <button id="closeCctvModal" style="background:none; border:none; cursor:pointer; font-size:1.25rem; color:var(--text-muted);"><i data-lucide="x"></i></button>
+      </div>
+      <!-- Large feed video placeholder -->
+      <div style="background-color:#111827; height:320px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; position:relative; overflow:hidden;">
+        <!-- Blinking recording indicator -->
+        <div style="position:absolute; top:15px; left:15px; display:flex; align-items:center; gap:0.5rem; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; z-index:10;">
+          <span style="background:red; width:8px; height:8px; border-radius:50%; display:inline-block; animation: blink 1s infinite;"></span>
+          <span style="color:white; font-size:0.7rem; font-weight:700;">LIVE</span>
+        </div>
+        
+        <div style="position:absolute; bottom:15px; right:15px; background:rgba(0,0,0,0.6); padding:0.25rem 0.5rem; border-radius:4px; color:white; font-size:0.75rem; z-index:10;" id="modalLiveClock">
+          12:44:00 PM
+        </div>
+
+        <!-- Static noise scanner overlay -->
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 4px, 6px 100%; pointer-events:none;"></div>
+        
+        <i data-lucide="video" style="width:72px; height:72px; opacity:0.1; color:white;"></i>
+        <div style="position:absolute; bottom:15px; left:15px; display:flex; gap:0.5rem; z-index:10;">
+          <span style="background:var(--primary-color); color:white; font-size:0.7rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:2px;">1080P HD</span>
+          <span style="background:rgba(255,255,255,0.15); color:white; font-size:0.7rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:2px;">60 FPS</span>
+        </div>
+      </div>
+      <!-- Modal Controls -->
+      <div style="padding:1.5rem; display:flex; justify-content:space-between; align-items:center; background-color:var(--bg-light);">
+        <div style="display:flex; gap:0.75rem;">
+          <button class="btn btn-secondary" style="padding:0.5rem 1rem; font-size:0.85rem; border-radius:6px;" onclick="alert('Pan/Tilt commands sent')"><i data-lucide="move" style="width:14px; display:inline; vertical-align:middle; margin-right:4px;"></i> PTZ Control</button>
+          <button class="btn btn-secondary" style="padding:0.5rem 1rem; font-size:0.85rem; border-radius:6px;" onclick="alert('Two-way voice active')"><i data-lucide="mic" style="width:14px; display:inline; vertical-align:middle; margin-right:4px;"></i> Talk</button>
+        </div>
+        <button class="btn btn-primary" style="padding:0.5rem 1.25rem; font-size:0.85rem; border-radius:6px; background-color:#DC2626;" onclick="alert('Manual recording saved to secure hub')"><i data-lucide="circle-stop" style="width:14px; display:inline; vertical-align:middle; margin-right:4px;"></i> Save Record</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredName = localStorage.getItem('stackly_registered_name') || 'Home Owner';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const welcomeUser = document.getElementById('welcomeUser');
+      
+      if (userDisplay) userDisplay.innerText = registeredName;
+      if (welcomeUser) welcomeUser.innerText = `Security Control`;
+      if (avatarName) {
+        const initials = registeredName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+        avatarName.innerText = initials || 'HO';
+      }
+
+      // Security Streams Clock Update
+      const updateClocks = () => {
+        const liveClocks = document.querySelectorAll('.live-clock, #modalLiveClock');
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString();
+        liveClocks.forEach(c => c.innerText = timeStr);
+      };
+      setInterval(updateClocks, 1000);
+      updateClocks(); // Initial call
+
+      // Modal Enlarge Feeds
+      const cctvCards = document.querySelectorAll('.cctv-feed-card');
+      const cctvModal = document.getElementById('cctvModal');
+      const closeCctvModal = document.getElementById('closeCctvModal');
+      const modalCamTitle = document.getElementById('modalCamTitle');
+      const modalCamLoc = document.getElementById('modalCamLoc');
+
+      cctvCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const name = card.getAttribute('data-cam-name');
+          const loc = card.getAttribute('data-cam-loc');
+          modalCamTitle.innerText = `CAM - ${name}`;
+          modalCamLoc.innerText = loc;
+          cctvModal.style.display = 'flex';
+        });
+      });
+
+      if (closeCctvModal) {
+        closeCctvModal.addEventListener('click', () => {
+          cctvModal.style.display = 'none';
+        });
+      }
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

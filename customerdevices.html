@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connected Devices | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="customerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuDevices">
+          <a href="customerdevices.html"><i data-lucide="smartphone"></i> Connected Devices</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuSecurity">
+          <a href="customersecurity.html"><i data-lucide="shield"></i> Security Feeds</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuEnergy">
+          <a href="customerenergy.html"><i data-lucide="leaf"></i> Energy Analytics</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Connected Devices</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Manage and tune your active hardware nodes.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName">HO</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">admin@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon"><i data-lucide="thermometer"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Inside Temp</h3>
+            <div class="dashboard-stat-value">22.4°C</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="zap"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Power Usage Today</h3>
+            <div class="dashboard-stat-value">12.8 kWh</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="smartphone"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Devices</h3>
+            <div class="dashboard-stat-value" id="activeDevicesCount">18 / 22</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEE2E2; color:#DC2626;"><i data-lucide="shield"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Security</h3>
+            <div class="dashboard-stat-value">Armed (Home)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 2: CONNECTED DEVICES -->
+      <div id="viewDevices" class="dashboard-view fade-in active">
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-header">
+            <h2 class="dashboard-panel-title">Devices Grid Controls</h2>
+            <div style="display:flex; gap:0.5rem;" id="deviceFilters">
+              <button class="btn btn-secondary filter-btn active" data-filter="all" style="padding:0.4rem 0.8rem; font-size:0.8rem;">All</button>
+              <button class="btn btn-secondary filter-btn" data-filter="lighting" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Lighting</button>
+              <button class="btn btn-secondary filter-btn" data-filter="climate" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Climate</button>
+              <button class="btn btn-secondary filter-btn" data-filter="security" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Security</button>
+              <button class="btn btn-secondary filter-btn" data-filter="appliances" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Appliances</button>
+            </div>
+          </div>
+
+          <div class="device-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));" id="devicesListGrid">
+            <!-- Aura Smart Bulb -->
+            <div class="device-card active-card" data-device-type="lighting">
+              <div style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div class="dashboard-stat-icon" style="width:40px; height:40px; font-size:1.1rem;"><i data-lucide="lightbulb"></i></div>
+                    <div>
+                      <h4 style="font-weight:600; font-size:0.95rem;">Aura Bulb</h4>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">Living Room</span>
+                    </div>
+                  </div>
+                  <label class="scenario-toggle">
+                    <input type="checkbox" checked class="card-device-toggle" data-device-name="Aura Bulb">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <!-- Dimmer Slider -->
+                <div style="margin-top:1rem;">
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">
+                    <span>Brightness</span>
+                    <span class="brightness-val">80%</span>
+                  </div>
+                  <input type="range" min="10" max="100" value="80" class="dimmer-slider" style="width:100%; accent-color:var(--primary-color);">
+                </div>
+              </div>
+            </div>
+
+            <!-- Nestle Smart Thermostat -->
+            <div class="device-card active-card" data-device-type="climate">
+              <div style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div class="dashboard-stat-icon" style="width:40px; height:40px; font-size:1.1rem;"><i data-lucide="thermometer"></i></div>
+                    <div>
+                      <h4 style="font-weight:600; font-size:0.95rem;">Thermostat</h4>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">Hallway Wall</span>
+                    </div>
+                  </div>
+                  <label class="scenario-toggle">
+                    <input type="checkbox" checked class="card-device-toggle" data-device-name="Thermostat">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <!-- Temperature Adjustment Controls -->
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.5rem; background-color:var(--bg-light); padding:0.5rem 1rem; border-radius:6px;">
+                  <button class="btn btn-secondary temp-btn" data-dir="down" style="padding:0.25rem; font-size:1rem; border-radius:50%; width:32px; height:32px; min-width:0;"><i data-lucide="minus" style="width:16px;"></i></button>
+                  <span style="font-size:1.25rem; font-weight:700; color:var(--dark-color);" class="temp-display">22.0°C</span>
+                  <button class="btn btn-secondary temp-btn" data-dir="up" style="padding:0.25rem; font-size:1rem; border-radius:50%; width:32px; height:32px; min-width:0;"><i data-lucide="plus" style="width:16px;"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sentinel Door Lock -->
+            <div class="device-card" data-device-type="security">
+              <div style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div class="dashboard-stat-icon" style="width:40px; height:40px; font-size:1.1rem;"><i data-lucide="lock"></i></div>
+                    <div>
+                      <h4 style="font-weight:600; font-size:0.95rem;">Sentinel Lock</h4>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">Main Front Entry</span>
+                    </div>
+                  </div>
+                  <label class="scenario-toggle">
+                    <input type="checkbox" class="card-device-toggle" data-device-name="Sentinel Lock">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div style="margin-top:1.5rem; text-align:center; font-weight:700; color:#EF4444; font-size:0.9rem; letter-spacing:1px;" class="lock-status">
+                  LOCKED
+                </div>
+              </div>
+            </div>
+
+            <!-- TV AC Controller (IR Blaster) -->
+            <div class="device-card active-card" data-device-type="appliances">
+              <div style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div class="dashboard-stat-icon" style="width:40px; height:40px; font-size:1.1rem;"><i data-lucide="tv"></i></div>
+                    <div>
+                      <h4 style="font-weight:600; font-size:0.95rem;">IR Blaster</h4>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">Living Room TV</span>
+                    </div>
+                  </div>
+                  <label class="scenario-toggle">
+                    <input type="checkbox" checked class="card-device-toggle" data-device-name="IR Blaster">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <!-- Quick TV Remote Buttons -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:1rem;">
+                  <button class="btn btn-secondary tv-remote-btn" style="padding:0.4rem; font-size:0.8rem; border-radius:4px;" data-action="Vol Up"><i data-lucide="volume-2" style="width:14px; display:inline; vertical-align:middle;"></i> Vol +</button>
+                  <button class="btn btn-secondary tv-remote-btn" style="padding:0.4rem; font-size:0.8rem; border-radius:4px;" data-action="Vol Down"><i data-lucide="volume-x" style="width:14px; display:inline; vertical-align:middle;"></i> Vol -</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Smart Heavy Plug -->
+            <div class="device-card" data-device-type="appliances">
+              <div style="padding:1.5rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div class="dashboard-stat-icon" style="width:40px; height:40px; font-size:1.1rem;"><i data-lucide="zap"></i></div>
+                    <div>
+                      <h4 style="font-weight:600; font-size:0.95rem;">Geyser Smart Plug</h4>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">Bathroom 1</span>
+                    </div>
+                  </div>
+                  <label class="scenario-toggle">
+                    <input type="checkbox" class="card-device-toggle" data-device-name="Geyser Plug">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div style="margin-top:1.5rem; display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted);">
+                  <span>Current Power</span>
+                  <span style="font-weight:600; color:var(--dark-color);" class="power-display">0 W</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredName = localStorage.getItem('stackly_registered_name') || 'Home Owner';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      const welcomeUser = document.getElementById('welcomeUser');
+      
+      if (userDisplay) userDisplay.innerText = registeredName;
+      if (avatarName) {
+        const initials = registeredName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+        avatarName.innerText = initials || 'HO';
+      }
+
+      // Card Toggles
+      const cardToggles = document.querySelectorAll('.card-device-toggle');
+      cardToggles.forEach(toggle => {
+        toggle.addEventListener('change', () => {
+          const card = toggle.closest('.device-card');
+          const devName = toggle.getAttribute('data-device-name');
+          const statIcon = card.querySelector('.dashboard-stat-icon');
+          
+          if (toggle.checked) {
+            card.classList.add('active-card');
+            if (statIcon) {
+              statIcon.style.backgroundColor = '';
+              statIcon.style.color = '';
+            }
+            showToast(`${devName} is active`);
+            
+            if (devName === 'Sentinel Lock') {
+              const lockText = card.querySelector('.lock-status');
+              lockText.innerText = 'UNLOCKED';
+              lockText.style.color = '#10B981';
+            }
+            if (devName === 'Geyser Plug') {
+              card.querySelector('.power-display').innerText = '1850 W';
+            }
+          } else {
+            card.classList.remove('active-card');
+            if (statIcon) {
+              statIcon.style.backgroundColor = '#F3F4F6';
+              statIcon.style.color = '#9CA3AF';
+            }
+            showToast(`${devName} entered standby`);
+            
+            if (devName === 'Sentinel Lock') {
+              const lockText = card.querySelector('.lock-status');
+              lockText.innerText = 'LOCKED';
+              lockText.style.color = '#EF4444';
+            }
+            if (devName === 'Geyser Plug') {
+              card.querySelector('.power-display').innerText = '0 W';
+            }
+          }
+          updateActiveDevicesCount();
+        });
+      });
+
+      // Filter Devices
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          const cards = document.querySelectorAll('#devicesListGrid > .device-card');
+          
+          cards.forEach(card => {
+            const cardType = card.getAttribute('data-device-type');
+            if (filter === 'all' || cardType === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Dimmer Slider Brightness
+      const sliders = document.querySelectorAll('.dimmer-slider');
+      sliders.forEach(slider => {
+        slider.addEventListener('input', () => {
+          const parent = slider.parentElement;
+          const display = parent.querySelector('.brightness-val');
+          display.innerText = `${slider.value}%`;
+        });
+      });
+
+      // Temperature adjust buttons
+      const tempBtns = document.querySelectorAll('.temp-btn');
+      tempBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const display = btn.parentElement.querySelector('.temp-display');
+          let currentTemp = parseFloat(display.innerText);
+          const dir = btn.getAttribute('data-dir');
+          
+          if (dir === 'up') {
+            currentTemp += 0.5;
+          } else {
+            currentTemp -= 0.5;
+          }
+          display.innerText = `${currentTemp.toFixed(1)}°C`;
+        });
+      });
+
+      // TV controls
+      const tvBtns = document.querySelectorAll('.tv-remote-btn');
+      tvBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-action');
+          showToast(`Remote command: ${action}`);
+        });
+      });
+
+      const updateActiveDevicesCount = () => {
+        let active = 0;
+        cardToggles.forEach(t => { if (t.checked) active++; });
+        const counterDisplay = document.getElementById('activeDevicesCount');
+        if (counterDisplay) {
+          counterDisplay.innerText = `${active + 15} / 22`;
+        }
+      };
+      updateActiveDevicesCount();
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY | Smart Devices & Catalogs</title>
+  <meta name="description" content="Explore STACKLY's wide range of smart bulbs, switches, thermostats, and appliances. Compatible with Alexa, Google Home, and Siri.">
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. Header / Navbar (Identical to index) -->
+  <header class="header" id="mainHeader">
+    <div class="container navbar">
+      <a href="index.html" class="brand" id="brandLogo">
+        STACKLY<span class="brand-accent">.</span>
+      </a>
+      
+      <button class="menu-toggle" aria-label="Toggle Navigation" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="samartdevice.html" class="active">Smart Devices</a></li>
+        <li><a href="automation.html">Automation</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="mobile-login-btn" style="display: none;"><a href="login.html" class="btn btn-primary">Login</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary" id="loginBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Page Banner Section -->
+  <section class="page-banner" id="devicesBannerSection" style="background-image: url('assets/devices.webp');">
+    <div class="page-banner-overlay"></div>
+    <div class="container page-banner-content reveal-left">
+      <h1 class="page-banner-title">Smart Devices</h1>
+      <div class="page-banner-breadcrumbs">
+        <a href="index.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Smart Devices</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Smart Devices Overview Section -->
+  <section class="smart-devices-overview" id="smartDevicesOverview">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <span class="section-tag">Device Ecosystem</span>
+          <h2 class="section-title">Bring Intelligence to Every Corner of Your House</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">STACKLY connected hardware acts as the physical layer of your smart home. Every bulb, switch, thermostat, and lock is built with premium quality materials and low-latency microcontrollers.</p>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Designed to look sleek and modern, our devices match any interior decor. They integrate out of the box, auto-discover on your local Wi-Fi, and establish secure end-to-end encrypted tunnels.</p>
+          <a href="#catalog" class="btn btn-primary">Browse Catalog</a>
+        </div>
+        <div class="reveal-right" style="text-align: center;">
+          <!-- Grid of mini stats or quick facts -->
+          <div class="about-features" style="margin-top: 0;">
+            <div class="about-feature-card" style="text-align: left;">
+              <div class="about-feature-icon"><i data-lucide="wifi"></i></div>
+              <h4 style="font-weight:600; margin-bottom: 0.25rem;">Wi-Fi & Zigbee</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Double protocol support for stable, offline controls.</p>
+            </div>
+            <div class="about-feature-card" style="text-align: left;">
+              <div class="about-feature-icon"><i data-lucide="shield-check"></i></div>
+              <h4 style="font-weight:600; margin-bottom: 0.25rem;">Hardware Encrypted</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted);">AES-256 standard on chips prevents security breaches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Smart Lighting Section -->
+  <section class="smart-lighting section-bg-light" id="smartLightingSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-box reveal-left">
+          <!-- We can use our devices banner image in different crop, or use gradient visualizer -->
+          <div style="background: linear-gradient(135deg, #FF9F1C 0%, #007FC5 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="lightbulb" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Ambient Solutions</span>
+          <h2 class="section-title">Smart Bulbs & Touch Panels</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Control individual lights or create groups to change room profiles in a single tap. Our smart switches fit standard walls, bringing tactile glass touch plates and LED indicators to your living room.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> Ambient dimming & custom color temperatures</li>
+            <li><i data-lucide="check"></i> Smart switches replacing old mechanical modules</li>
+            <li><i data-lucide="check"></i> Custom color profiles: Movie, Party, Sleep, Reading</li>
+          </ul>
+          <a href="#catalog" class="btn btn-secondary">Explore Lighting</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Smart Thermostats Section -->
+  <section class="smart-thermostats" id="smartThermostatsSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <span class="section-tag">Climate Intelligence</span>
+          <h2 class="section-title">Precision Temperature Control</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Optimize climate control based on active occupancy. Our smart thermostats track indoor humidity, ambient light, and outer temperatures to regulate heaters and AC compressors.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> Learns temperature habits within 7 days</li>
+            <li><i data-lucide="check"></i> Automated energy-saving mode when home is empty</li>
+            <li><i data-lucide="check"></i> Smart zone management for different rooms</li>
+          </ul>
+          <a href="#catalog" class="btn btn-secondary">Explore Climate</a>
+        </div>
+        <div class="about-img-box reveal-right">
+          <div style="background: linear-gradient(135deg, #00D2C4 0%, #005A92 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="thermometer" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Smart Appliances Section -->
+  <section class="smart-appliances section-bg-light" id="smartAppliancesSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-box reveal-left">
+          <div style="background: linear-gradient(135deg, #FF6B35 0%, #7209B7 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="tv" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Asset Integration</span>
+          <h2 class="section-title">TVs, Refrigerators, and AC Control</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Integrate heavy appliances into your smart system. Control AC temperatures, monitor smart refrigerator energy, and toggle TVs through infrared and Wi-Fi commands.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> Smart plugs measuring energy consumption</li>
+            <li><i data-lucide="check"></i> Infrared blasters mimicking standard physical remotes</li>
+            <li><i data-lucide="check"></i> Automated scheduling to avoid peak rate hours</li>
+          </ul>
+          <a href="#catalog" class="btn btn-secondary">Explore Appliances</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Device Compatibility Section -->
+  <section class="compatibility" id="compatibilitySection">
+    <div class="container">
+      <div class="section-header reveal-up" style="margin-bottom: 2.5rem;">
+        <span class="section-tag">Cross Compatible</span>
+        <h2 class="section-title" style="font-size: 2rem;">Works with Your Voice Assistants</h2>
+      </div>
+      <div class="compatibility-list reveal-up">
+        <div class="compatibility-item">
+          <i data-lucide="mic"></i>
+          <span>Amazon Alexa</span>
+        </div>
+        <div class="compatibility-item">
+          <i data-lucide="volume-2"></i>
+          <span>Google Assistant</span>
+        </div>
+        <div class="compatibility-item">
+          <i data-lucide="smartphone"></i>
+          <span>Apple HomeKit (Siri)</span>
+        </div>
+        <div class="compatibility-item">
+          <i data-lucide="radio"></i>
+          <span>Zigbee / Z-Wave</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Device Catalog Grid Section -->
+  <section class="device-catalog" id="catalog">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">Product Catalog</span>
+        <h2 class="section-title">Explore Our Connected Range</h2>
+        <p class="section-desc">Add these high-end, responsive smart items to your STACKLY home setup.</p>
+      </div>
+
+      <div class="device-grid">
+        <!-- Item 1 -->
+        <div class="device-card reveal-up">
+          <div class="device-card-img">
+            <i data-lucide="lightbulb"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Smart Lighting</div>
+            <h3 class="device-card-name">Aura Smart LED Bulb</h3>
+            <p class="device-card-desc">Screw-in energy-saving bulb. 16M RGB colors with dimming control.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$29.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.05s;">
+          <div class="device-card-img">
+            <i data-lucide="toggle-left"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Smart Lighting</div>
+            <h3 class="device-card-name">Touch panel Glass Switch</h3>
+            <p class="device-card-desc">Sleek glass switch plate replacing standard 4-way wall controls.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$49.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="device-card-img">
+            <i data-lucide="thermometer"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Smart Thermostats</div>
+            <h3 class="device-card-name">Nestle Smart Thermostat</h3>
+            <p class="device-card-desc">Self-regulating temperature console with LCD touch screen.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$189.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.15s;">
+          <div class="device-card-img">
+            <i data-lucide="zap"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Smart Appliances</div>
+            <h3 class="device-card-name">16A Smart Heavy Power Plug</h3>
+            <p class="device-card-desc">High capacity plug designed for water heaters, ACs, and ovens.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$39.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.2s;">
+          <div class="device-card-img">
+            <i data-lucide="tv"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Smart Appliances</div>
+            <h3 class="device-card-name">Universal Smart IR Blaster</h3>
+            <p class="device-card-desc">Controls TVs, set-top boxes, and split ACs via mobile phone commands.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$19.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="device-card reveal-up" style="transition-delay: 0.25s;">
+          <div class="device-card-img">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <div class="device-card-content">
+            <div class="device-card-category">Security</div>
+            <h3 class="device-card-name">Sentinel Smart Door Lock</h3>
+            <p class="device-card-desc">Biometric fingerprint access lock with physical backup keyway.</p>
+            <div class="device-card-footer">
+              <span class="device-price">$249.99</span>
+              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer (Identical to index) -->
+  <footer class="footer" id="mainFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-box">
+          <div class="footer-brand">STACKLY<span>.</span></div>
+          <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
+          <div class="footer-socials">
+            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="samartdevice.html">Smart Devices</a></li>
+            <li><a href="automation.html">Home Automation</a></li>
+            <li><a href="security.html">Home Security</a></li>
+            <li><a href="404.html">Energy Analytics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ Help Center</a></li>
+            <li><a href="404.html">Technical Portal</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Corporate Info</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Tata Power EZHome District Hub, Suite 350, Mumbai, MH, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>+1 (800) 555-0199</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <span>support@stackly.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 STACKLY Smart Home. All Rights Reserved. Inspired by Tata Power EZHome.</p>
+        <p>
+          <a href="404.html" style="margin-right: 1rem;">Terms of Service</a>
+          <a href="404.html">Sitemap</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>

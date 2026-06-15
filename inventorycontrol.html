@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Control | STACKLY Smart Home</title>
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Circular SVG Stock Progress Bar */
+    .progress-ring {
+      position: relative;
+      width: 70px;
+      height: 70px;
+    }
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.6s ease;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+  </style>
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <button class="sidebar-close" id="sidebarClose" style="display:none;"><i data-lucide="x"></i></button>
+      <div class="sidebar-logo">STACKLY<span>.</span></div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item" id="menuOverview">
+          <a href="sellerdashboard.html"><i data-lucide="layout-dashboard"></i> Overview</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuDeployments">
+          <a href="siteinstallations.html"><i data-lucide="wrench"></i> Site Installations</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuAlerts">
+          <a href="systemdiagnostics.html"><i data-lucide="activity"></i> System Diagnostics</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuTickets">
+          <a href="servicetickets.html"><i data-lucide="clipboard-list"></i> Service Tickets</a>
+        </li>
+        <li class="sidebar-menu-item active" id="menuInventory">
+          <a href="inventorycontrol.html"><i data-lucide="package"></i> Inventory Control</a>
+        </li>
+        <li class="sidebar-menu-item" id="menuProfile">
+          <a href="installerprofile.html"><i data-lucide="user"></i> Installer Profile</a>
+        </li>
+      </ul>
+      <div class="sidebar-logout">
+        <a href="#" id="logoutLink"><i data-lucide="log-out"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-dashboard-header">
+      <div class="sidebar-logo" style="margin-bottom: 0; font-size: 1.5rem;">STACKLY<span>.</span></div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight:700; color:var(--dark-color);" id="welcomeUser">Inventory Control</h1>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Monitor warehouse hardware stock levels and warning limits.</p>
+        </div>
+        <div class="dashboard-user-profile">
+          <div class="dashboard-user-avatar" id="avatarName" style="background-color: #EF4444;">IN</div>
+          <span style="font-weight:600; color:var(--dark-color);" id="usernameDisplay">installer@stackly.com</span>
+        </div>
+      </header>
+
+      <!-- Quick Stats Row -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color: var(--primary-light); color: var(--primary-color);"><i data-lucide="clipboard-list"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Pending Audits</h3>
+            <div class="dashboard-stat-value">2 Requests</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#DCFCE7; color:#16A34A;"><i data-lucide="check-circle-2"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Active Installs</h3>
+            <div class="dashboard-stat-value">144 Sites</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#E0F2FE; color:#0284C7;"><i data-lucide="activity"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Node Health</h3>
+            <div class="dashboard-stat-value">99.8% Online</div>
+          </div>
+        </div>
+
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon" style="background-color:#FEF3C7; color:#D97706;"><i data-lucide="alert-triangle"></i></div>
+          <div class="dashboard-stat-info">
+            <h3>Warnings</h3>
+            <div class="dashboard-stat-value">2 Nodes Low Batt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW: INVENTORY CONTROL -->
+      <div id="viewInventory" class="dashboard-view fade-in active">
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-header" style="margin-bottom:1.5rem;">
+            <h2 class="dashboard-panel-title">Hardware Warehouse Stock</h2>
+          </div>
+          
+          <div class="responsive-grid-3" id="inventoryGrid" style="gap:2.5rem;">
+            <!-- Device Item 1: Bulb -->
+            <div style="border:1px solid var(--border-color); padding:1.5rem; border-radius:6px; display:flex; align-items:center; justify-content:space-between; background-color:#fff;" class="inventory-card" data-max="200" data-current="152">
+              <div>
+                <h4 style="font-weight:600; font-size:0.95rem;">Smart LED Bulbs</h4>
+                <span style="font-size:0.75rem; color:var(--text-muted);">SKU-BULB-01</span>
+                <div style="font-size:1.5rem; font-weight:700; color:var(--dark-color); margin-top:0.5rem;" class="stock-qty-val">152</div>
+                <button class="btn btn-secondary restock-btn" style="padding:0.25rem 0.5rem; font-size:0.7rem; border-radius:4px; margin-top:0.5rem;" data-item="Smart LED Bulbs">Restock</button>
+              </div>
+              <div class="progress-ring">
+                <svg width="70" height="70">
+                  <circle stroke="#E5E7EB" stroke-width="6" fill="transparent" r="28" cx="35" cy="35"/>
+                  <circle stroke="var(--primary-color)" stroke-width="6" fill="transparent" r="28" cx="35" cy="35" class="progress-ring-circle" stroke-dasharray="175.9" stroke-dashoffset="42"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Device Item 2: Lock -->
+            <div style="border:1px solid var(--border-color); padding:1.5rem; border-radius:6px; display:flex; align-items:center; justify-content:space-between; background-color:#fff;" class="inventory-card" data-max="50" data-current="2">
+              <div>
+                <h4 style="font-weight:600; font-size:0.95rem;">Smart Door Locks</h4>
+                <span style="font-size:0.75rem; color:var(--text-muted); color:#EF4444; font-weight:600;">SKU-LOCK-02 (Low)</span>
+                <div style="font-size:1.5rem; font-weight:700; color:#EF4444; margin-top:0.5rem;" class="stock-qty-val">2</div>
+                <button class="btn btn-secondary restock-btn" style="padding:0.25rem 0.5rem; font-size:0.7rem; border-radius:4px; margin-top:0.5rem;" data-item="Smart Door Locks">Restock</button>
+              </div>
+              <div class="progress-ring">
+                <svg width="70" height="70">
+                  <circle stroke="#E5E7EB" stroke-width="6" fill="transparent" r="28" cx="35" cy="35"/>
+                  <circle stroke="#EF4444" stroke-width="6" fill="transparent" r="28" cx="35" cy="35" class="progress-ring-circle" stroke-dasharray="175.9" stroke-dashoffset="168.8"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Device Item 3: Thermostat -->
+            <div style="border:1px solid var(--border-color); padding:1.5rem; border-radius:6px; display:flex; align-items:center; justify-content:space-between; background-color:#fff;" class="inventory-card" data-max="80" data-current="48">
+              <div>
+                <h4 style="font-weight:600; font-size:0.95rem;">Thermostats</h4>
+                <span style="font-size:0.75rem; color:var(--text-muted);">SKU-THERM-03</span>
+                <div style="font-size:1.5rem; font-weight:700; color:var(--dark-color); margin-top:0.5rem;" class="stock-qty-val">48</div>
+                <button class="btn btn-secondary restock-btn" style="padding:0.25rem 0.5rem; font-size:0.7rem; border-radius:4px; margin-top:0.5rem;" data-item="Thermostats">Restock</button>
+              </div>
+              <div class="progress-ring">
+                <svg width="70" height="70">
+                  <circle stroke="#E5E7EB" stroke-width="6" fill="transparent" r="28" cx="35" cy="35"/>
+                  <circle stroke="#10B981" stroke-width="6" fill="transparent" r="28" cx="35" cy="35" class="progress-ring-circle" stroke-dasharray="175.9" stroke-dashoffset="70.3"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Session Validation
+      if (localStorage.getItem('stackly_logged_in') !== 'true') {
+        window.location.replace('login.html');
+      }
+
+      // Display User details
+      const registeredEmail = localStorage.getItem('stackly_user_email') || 'installer@stackly.com';
+      const userDisplay = document.getElementById('usernameDisplay');
+      const avatarName = document.getElementById('avatarName');
+      
+      if (userDisplay) userDisplay.innerText = registeredEmail;
+      if (avatarName) {
+        const initials = registeredEmail.split('@')[0].substring(0,2).toUpperCase();
+        avatarName.innerText = initials || 'IN';
+      }
+
+      // Circular Gauges Animation
+      const initInventoryGauges = () => {
+        const cards = document.querySelectorAll('.inventory-card');
+        cards.forEach(card => {
+          const max = parseFloat(card.getAttribute('data-max'));
+          const cur = parseFloat(card.getAttribute('data-current'));
+          const circle = card.querySelector('.progress-ring-circle');
+          
+          if (circle) {
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius; // ~175.9
+            const percent = cur / max;
+            const offset = circumference - (percent * circumference);
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            setTimeout(() => {
+              circle.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+              circle.style.strokeDashoffset = offset;
+            }, 100);
+          }
+        });
+      };
+      initInventoryGauges();
+
+      // Restock action buttons increment counters
+      const restockBtns = document.querySelectorAll('.restock-btn');
+      restockBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.inventory-card');
+          const qtyText = card.querySelector('.stock-qty-val');
+          const current = parseInt(qtyText.innerText);
+          const max = parseInt(card.getAttribute('data-max'));
+          const item = btn.getAttribute('data-item');
+
+          if (current >= max) {
+            showToast(`${item} warehouse stock is already full.`);
+            return;
+          }
+
+          btn.disabled = true;
+          let count = current;
+          const interval = setInterval(() => {
+            count += Math.ceil((max - current) / 15);
+            if (count >= max) {
+              count = max;
+              clearInterval(interval);
+              btn.disabled = false;
+              
+              card.setAttribute('data-current', max);
+              const warningSpan = card.querySelector('span');
+              if (warningSpan) {
+                warningSpan.innerText = 'SKU-LOCK-02';
+                warningSpan.style.color = '';
+              }
+              qtyText.style.color = '';
+              initInventoryGauges();
+              showToast(`Warehouse restocked: ${item} is full.`);
+            }
+            qtyText.innerText = count;
+          }, 50);
+        });
+      });
+
+      // Logout handler
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('stackly_logged_in');
+          localStorage.removeItem('stackly_user_role');
+          localStorage.removeItem('stackly_user_email');
+          window.location.replace('login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

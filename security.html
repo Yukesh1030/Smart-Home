@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY | Smart Security & Monitoring</title>
+  <meta name="description" content="Ensure total peace of mind with STACKLY Smart Security. Real-time surveillance cameras, secure access door locks, and instant motion notifications.">
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. Header / Navbar -->
+  <header class="header" id="mainHeader">
+    <div class="container navbar">
+      <a href="index.html" class="brand" id="brandLogo">
+        STACKLY<span class="brand-accent">.</span>
+      </a>
+      
+      <button class="menu-toggle" aria-label="Toggle Navigation" id="mobileMenuBtn">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="samartdevice.html">Smart Devices</a></li>
+        <li><a href="automation.html">Automation</a></li>
+        <li><a href="security.html" class="active">Security</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="mobile-login-btn" style="display: none;"><a href="login.html" class="btn btn-primary">Login</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary" id="loginBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. Page Banner Section -->
+  <section class="page-banner" id="securityBannerSection" style="background-image: url('assets/security.webp');">
+    <div class="page-banner-overlay"></div>
+    <div class="container page-banner-content reveal-left">
+      <h1 class="page-banner-title">Smart Security</h1>
+      <div class="page-banner-breadcrumbs">
+        <a href="index.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Security</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Smart Security Overview Section -->
+  <section class="smart-security-overview" id="securityOverview">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <span class="section-tag">Total Protection</span>
+          <h2 class="section-title">Safeguard What Matters Most</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">STACKLY Security systems are built to guard your property against intrusions, fire, and water leaks. Our hardware operates on secure batteries and cellular backup systems, ensuring protection even during power cuts.</p>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Integrate cameras, locks, alarm hubs, and motion sensors into a single, cohesive defensive network. Review live feeds, grant guest keys, and receive instant emergency response alerts directly from your smartphone.</p>
+          <a href="contact.html" class="btn btn-primary">Request Security Audit</a>
+        </div>
+        <div class="reveal-right">
+          <div style="background-color: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; gap:1rem; margin-bottom: 1.5rem;">
+              <div style="font-size:2rem; color:var(--primary-color);"><i data-lucide="shield"></i></div>
+              <div>
+                <h4 style="font-weight:600; margin-bottom:0.25rem;">Military Encryption</h4>
+                <p style="font-size:0.875rem; color:var(--text-muted);">AES-256 and SSL/TLS standards keep your camera streams and door codes confidential.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap:1rem;">
+              <div style="font-size:2rem; color:var(--primary-color);"><i data-lucide="battery-charging"></i></div>
+              <div>
+                <h4 style="font-weight:600; margin-bottom:0.25rem;">Power Loss Proof</h4>
+                <p style="font-size:0.875rem; color:var(--text-muted);">Batteries and cellular transceivers keep devices operational for 48 hours without mains.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Smart Cameras Section -->
+  <section class="smart-cameras section-bg-light" id="smartCamerasSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-box reveal-left">
+          <div style="background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="camera" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Surveillance</span>
+          <h2 class="section-title">Indoor & Outdoor Monitoring</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Capture every detail with 4K HDR resolution and 130° wide field of views. Our outdoor units feature IP66 weatherproofing, spotlight color night vision, and two-way voice intercoms.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> 4K HDR video and color night vision</li>
+            <li><i data-lucide="check"></i> Local secure storage + encrypted cloud backup</li>
+            <li><i data-lucide="check"></i> Two-way microphone intercom to speak to visitors</li>
+          </ul>
+          <a href="samartdevice.html" class="btn btn-secondary">Explore Cameras</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Smart Door Locks Section -->
+  <section class="smart-door-locks" id="smartLocksSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <span class="section-tag">Access Control</span>
+          <h2 class="section-title">Secure Biometric Access Control</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Replace physical keys with encrypted digital credentials. Lock and unlock doors using fingerprint readers, custom numeric PINs, temporary mobile passes, or standard voice commands.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> 0.3s fast biometric fingerprint scan</li>
+            <li><i data-lucide="check"></i> Temporary guest passcodes with specific expiry</li>
+            <li><i data-lucide="check"></i> Smart auto-lock after door closes</li>
+          </ul>
+          <a href="samartdevice.html" class="btn btn-secondary">Explore Locks</a>
+        </div>
+        <div class="about-img-box reveal-right">
+          <div style="background: linear-gradient(135deg, #10B981 0%, #111827 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="lock" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Motion Detection Section -->
+  <section class="motion-detection section-bg-light" id="motionDetectionSection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-box reveal-left">
+          <div style="background: linear-gradient(135deg, #EF4444 0%, #F59E0B 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="rss" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Proactive Security</span>
+          <h2 class="section-title">Instant Intelligent Alerts</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Avoid false triggers from pets or blowing leaves. STACKLY uses local edge AI processing to differentiate between humans, vehicles, packages, and stray animals.</p>
+          <ul class="pricing-features" style="margin-bottom: 2rem;">
+            <li><i data-lucide="check"></i> Smart AI human body detection</li>
+            <li><i data-lucide="check"></i> Customizable motion-trigger zones</li>
+            <li><i data-lucide="check"></i> Direct notifications containing snapshot overlays</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 24/7 Monitoring Section -->
+  <section class="surveillance-monitoring" id="monitoringSection">
+    <div class="container">
+      <div class="security-grid">
+        <div class="reveal-left">
+          <span class="section-tag">24/7 Monitoring</span>
+          <h2 class="section-title">Real-Time Surveillance Channels</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Review active security grids from any panel. Our smart displays show multiple camera feeds simultaneously with ultra-low delay streaming.</p>
+          <div class="security-details">
+            <div class="security-item">
+              <div class="security-item-icon"><i data-lucide="tv"></i></div>
+              <div>
+                <h4 class="security-item-title">Smart Display Feed</h4>
+                <p class="security-item-desc">Cast your camera feeds directly to televisions or smart home screens with voice call triggers.</p>
+              </div>
+            </div>
+            <div class="security-item">
+              <div class="security-item-icon"><i data-lucide="server"></i></div>
+              <div>
+                <h4 class="security-item-title">Edge Recording Logs</h4>
+                <p class="security-item-desc">Secure local NVR stores continuous footage for 30 days without loading external web bandwidth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="security-image reveal-right">
+          <div style="background-color:#ECEFF1; border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-xl);">
+            <!-- Mock Security Monitor grid -->
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px; background-color:#374151; padding:2px;">
+              <div style="background-color:#1E293B; height:150px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                <span>CAM 01 - FRONT ENTRY</span>
+                <span style="position:absolute; top:5px; left:5px; background:red; width:8px; height:8px; border-radius:50%; animation: blink 1s infinite;"></span>
+              </div>
+              <div style="background-color:#1E293B; height:150px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                <span>CAM 02 - BACKYARD</span>
+                <span style="position:absolute; top:5px; left:5px; background:red; width:8px; height:8px; border-radius:50%; animation: blink 1s infinite;"></span>
+              </div>
+              <div style="background-color:#1E293B; height:150px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                <span>CAM 03 - LIVING ROOM</span>
+                <span style="position:absolute; top:5px; left:5px; background:red; width:8px; height:8px; border-radius:50%; animation: blink 1s infinite;"></span>
+              </div>
+              <div style="background-color:#1E293B; height:150px; display:flex; align-items:center; justify-content:center; color:#9CA3AF; font-size:0.8rem; position:relative;">
+                <span>CAM 04 - GARAGE</span>
+                <span style="position:absolute; top:5px; left:5px; background:red; width:8px; height:8px; border-radius:50%; animation: blink 1s infinite;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+  <!-- 8. Emergency Response Section -->
+  <section class="emergency-response section-bg-light" id="emergencySection">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-box reveal-left">
+          <div style="background: linear-gradient(135deg, #111827 0%, #EF4444 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
+            <i data-lucide="phone-call" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <span class="section-tag">Emergency Dispatch</span>
+          <h2 class="section-title">Automated Security Notifications</h2>
+          <p class="section-desc" style="margin-bottom: 1.5rem;">Don't worry when you are out of range. STACKLY system routes critical notifications through multiple channels to ensure receipt.</p>
+          <div class="security-details">
+            <div class="security-item">
+              <div class="security-item-icon" style="background-color:#FEE2E2; color:#EF4444;"><i data-lucide="message-square"></i></div>
+              <div>
+                <h4 class="security-item-title">SMS & Voice Backups</h4>
+                <p class="security-item-desc">Receive automated phone calls and cellular SMS texts if your internet app connection fails.</p>
+              </div>
+            </div>
+            <div class="security-item">
+              <div class="security-item-icon" style="background-color:#FEE2E2; color:#EF4444;"><i data-lucide="users"></i></div>
+              <div>
+                <h4 class="security-item-title">Neighbor Contact Lists</h4>
+                <p class="security-item-desc">Add emergency contact numbers to automatically alert trusted neighbors when security thresholds breach.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer (Identical) -->
+  <footer class="footer" id="mainFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-box">
+          <div class="footer-brand">STACKLY<span>.</span></div>
+          <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
+          <div class="footer-socials">
+            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
+            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="samartdevice.html">Smart Devices</a></li>
+            <li><a href="automation.html">Home Automation</a></li>
+            <li><a href="security.html">Home Security</a></li>
+            <li><a href="404.html">Energy Analytics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ Help Center</a></li>
+            <li><a href="404.html">Technical Portal</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Corporate Info</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Tata Power EZHome District Hub, Suite 350, Mumbai, MH, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>+1 (800) 555-0199</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <span>support@stackly.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 STACKLY Smart Home. All Rights Reserved. Inspired by Tata Power EZHome.</p>
+        <p>
+          <a href="404.html" style="margin-right: 1rem;">Terms of Service</a>
+          <a href="404.html">Sitemap</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
