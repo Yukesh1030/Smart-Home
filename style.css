@@ -141,6 +141,18 @@ img {
   transform: translateY(-2px);
 }
 
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--bg-white);
+  border: 1.5px solid var(--bg-white);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--bg-white);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
 /* Header / Navbar */
 .header {
   position: fixed;
@@ -358,6 +370,7 @@ section {
   position: relative;
   z-index: 2;
   color: var(--bg-white);
+  text-align: center;
 }
 
 .page-banner-title {
@@ -397,6 +410,7 @@ section {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  justify-content: center;
 }
 
 .page-banner-breadcrumbs a:hover {
@@ -1869,7 +1883,13 @@ input:checked + .slider:before {
   .about-img-box, .security-image {
     order: -1;
     max-width: 600px;
+    width: 100%;
     margin: 0 auto;
+  }
+  
+  .about-img-box > div, .security-image > div,
+  .about-img-box > img, .security-image > img {
+    height: 240px !important;
   }
   
   .steps-grid {
@@ -2020,6 +2040,15 @@ input:checked + .slider:before {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    text-align: center;
+  }
+  
+  .footer-brand-box {
+    align-items: center;
+  }
+  
+  .footer-contact-item {
+    justify-content: center;
   }
   
   .footer-bottom {
