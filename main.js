@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. Scroll Reveal Animations (using Intersection Observer)
-  const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .fade-in');
+  const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-zoom-in, .fade-in');
   
   if ('IntersectionObserver' in window && revealElements.length > 0) {
     const observerOptions = {

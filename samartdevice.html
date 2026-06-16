@@ -13,7 +13,7 @@
 <body>
 
   <!-- 1. Header / Navbar (Identical to index) -->
-  <header class="header" id="mainHeader">
+  <header class="header header-animate" id="mainHeader">
     <div class="container navbar">
       <a href="index.html" class="brand" id="brandLogo">
         STACKLY<span class="brand-accent">.</span>
@@ -44,7 +44,7 @@
     <div class="container page-banner-content reveal-left">
       <h1 class="page-banner-title">Smart Devices</h1>
       <div class="page-banner-breadcrumbs">
-        <a href="index.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Smart Devices</span>
+        <a href="404.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Smart Devices</span>
       </div>
     </div>
   </section>
@@ -58,7 +58,7 @@
           <h2 class="section-title">Bring Intelligence to Every Corner of Your House</h2>
           <p class="section-desc" style="margin-bottom: 1.5rem;">STACKLY connected hardware acts as the physical layer of your smart home. Every bulb, switch, thermostat, and lock is built with premium quality materials and low-latency microcontrollers.</p>
           <p style="color: var(--text-muted); margin-bottom: 2rem;">Designed to look sleek and modern, our devices match any interior decor. They integrate out of the box, auto-discover on your local Wi-Fi, and establish secure end-to-end encrypted tunnels.</p>
-          <a href="#catalog" class="btn btn-primary">Browse Catalog</a>
+          <a href="404.html" class="btn btn-primary">Browse Catalog</a>
         </div>
         <div class="reveal-right" style="text-align: center;">
           <!-- Grid of mini stats or quick facts -->
@@ -84,10 +84,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-img-box reveal-left">
-          <!-- We can use our devices banner image in different crop, or use gradient visualizer -->
-          <div style="background: linear-gradient(135deg, #FF9F1C 0%, #007FC5 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
-            <i data-lucide="lightbulb" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
-          </div>
+          <img src="assets/lighting_panels.webp" alt="Smart Bulbs & Touch Panels" style="width: 100%; object-fit: cover; height: 350px; border-radius: var(--radius-lg);">
         </div>
         <div class="reveal-right">
           <span class="section-tag">Ambient Solutions</span>
@@ -98,7 +95,7 @@
             <li><i data-lucide="check"></i> Smart switches replacing old mechanical modules</li>
             <li><i data-lucide="check"></i> Custom color profiles: Movie, Party, Sleep, Reading</li>
           </ul>
-          <a href="#catalog" class="btn btn-secondary">Explore Lighting</a>
+          <a href="404.html" class="btn btn-secondary">Explore Lighting</a>
         </div>
       </div>
     </div>
@@ -117,12 +114,10 @@
             <li><i data-lucide="check"></i> Automated energy-saving mode when home is empty</li>
             <li><i data-lucide="check"></i> Smart zone management for different rooms</li>
           </ul>
-          <a href="#catalog" class="btn btn-secondary">Explore Climate</a>
+          <a href="404.html" class="btn btn-secondary">Explore Climate</a>
         </div>
         <div class="about-img-box reveal-right">
-          <div style="background: linear-gradient(135deg, #00D2C4 0%, #005A92 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
-            <i data-lucide="thermometer" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
-          </div>
+          <img src="assets/temp_control.webp" alt="Precision Temperature Control" style="width: 100%; object-fit: cover; height: 350px; border-radius: var(--radius-lg);">
         </div>
       </div>
     </div>
@@ -133,9 +128,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-img-box reveal-left">
-          <div style="background: linear-gradient(135deg, #FF6B35 0%, #7209B7 100%); height: 350px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg);">
-            <i data-lucide="tv" style="font-size:8rem; color:white; width:100px; height:100px;"></i>
-          </div>
+          <img src="assets/ir_blaster.webp" alt="Appliance Integration" style="width: 100%; object-fit: cover; height: 350px; border-radius: var(--radius-lg);">
         </div>
         <div class="reveal-right">
           <span class="section-tag">Asset Integration</span>
@@ -146,7 +139,7 @@
             <li><i data-lucide="check"></i> Infrared blasters mimicking standard physical remotes</li>
             <li><i data-lucide="check"></i> Automated scheduling to avoid peak rate hours</li>
           </ul>
-          <a href="#catalog" class="btn btn-secondary">Explore Appliances</a>
+          <a href="404.html" class="btn btn-secondary">Explore Appliances</a>
         </div>
       </div>
     </div>
@@ -159,20 +152,20 @@
         <span class="section-tag">Cross Compatible</span>
         <h2 class="section-title" style="font-size: 2rem;">Works with Your Voice Assistants</h2>
       </div>
-      <div class="compatibility-list reveal-up">
-        <div class="compatibility-item">
+      <div class="compatibility-list">
+        <div class="compatibility-item reveal-zoom-in">
           <i data-lucide="mic"></i>
           <span>Amazon Alexa</span>
         </div>
-        <div class="compatibility-item">
+        <div class="compatibility-item reveal-zoom-in" style="transition-delay: 0.05s;">
           <i data-lucide="volume-2"></i>
           <span>Google Assistant</span>
         </div>
-        <div class="compatibility-item">
+        <div class="compatibility-item reveal-zoom-in" style="transition-delay: 0.1s;">
           <i data-lucide="smartphone"></i>
           <span>Apple HomeKit (Siri)</span>
         </div>
-        <div class="compatibility-item">
+        <div class="compatibility-item reveal-zoom-in" style="transition-delay: 0.15s;">
           <i data-lucide="radio"></i>
           <span>Zigbee / Z-Wave</span>
         </div>
@@ -191,9 +184,9 @@
 
       <div class="device-grid">
         <!-- Item 1 -->
-        <div class="device-card reveal-up">
+        <div class="device-card reveal-zoom-in">
           <div class="device-card-img">
-            <i data-lucide="lightbulb"></i>
+            <img src="assets/bulb.webp" alt="Aura Smart LED Bulb">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Smart Lighting</div>
@@ -201,15 +194,15 @@
             <p class="device-card-desc">Screw-in energy-saving bulb. 16M RGB colors with dimming control.</p>
             <div class="device-card-footer">
               <span class="device-price">$29.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
 
         <!-- Item 2 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.05s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.05s;">
           <div class="device-card-img">
-            <i data-lucide="toggle-left"></i>
+            <img src="assets/glass_switch.webp" alt="Touch panel Glass Switch">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Smart Lighting</div>
@@ -217,15 +210,15 @@
             <p class="device-card-desc">Sleek glass switch plate replacing standard 4-way wall controls.</p>
             <div class="device-card-footer">
               <span class="device-price">$49.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
 
         <!-- Item 3 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.1s;">
           <div class="device-card-img">
-            <i data-lucide="thermometer"></i>
+            <img src="assets/thermostat.webp" alt="Nestle Smart Thermostat">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Smart Thermostats</div>
@@ -233,15 +226,15 @@
             <p class="device-card-desc">Self-regulating temperature console with LCD touch screen.</p>
             <div class="device-card-footer">
               <span class="device-price">$189.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
 
         <!-- Item 4 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.15s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.15s;">
           <div class="device-card-img">
-            <i data-lucide="zap"></i>
+            <img src="assets/power_plug.webp" alt="16A Smart Heavy Power Plug">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Smart Appliances</div>
@@ -249,15 +242,15 @@
             <p class="device-card-desc">High capacity plug designed for water heaters, ACs, and ovens.</p>
             <div class="device-card-footer">
               <span class="device-price">$39.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
 
         <!-- Item 5 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.2s;">
           <div class="device-card-img">
-            <i data-lucide="tv"></i>
+            <img src="assets/ir_blaster.webp" alt="Universal Smart IR Blaster">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Smart Appliances</div>
@@ -265,15 +258,15 @@
             <p class="device-card-desc">Controls TVs, set-top boxes, and split ACs via mobile phone commands.</p>
             <div class="device-card-footer">
               <span class="device-price">$19.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
 
         <!-- Item 6 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.25s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.25s;">
           <div class="device-card-img">
-            <i data-lucide="shield-check"></i>
+            <img src="assets/doorlock.webp" alt="Sentinel Smart Door Lock">
           </div>
           <div class="device-card-content">
             <div class="device-card-category">Security</div>
@@ -281,7 +274,7 @@
             <p class="device-card-desc">Biometric fingerprint access lock with physical backup keyway.</p>
             <div class="device-card-footer">
               <span class="device-price">$249.99</span>
-              <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Inquire</a>
             </div>
           </div>
         </div>
@@ -296,12 +289,6 @@
         <div class="footer-brand-box">
           <div class="footer-brand">STACKLY<span>.</span></div>
           <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
-          <div class="footer-socials">
-            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
-          </div>
         </div>
 
         <div>

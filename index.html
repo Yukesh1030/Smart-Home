@@ -13,7 +13,7 @@
 <body>
 
   <!-- 1. Header / Navbar -->
-  <header class="header" id="mainHeader">
+  <header class="header header-animate" id="mainHeader">
     <div class="container navbar">
       <a href="index.html" class="brand" id="brandLogo">
         STACKLY<span class="brand-accent">.</span>
@@ -39,15 +39,18 @@
   </header>
 
   <!-- 2. Hero Section -->
-  <section class="hero" id="heroSection" style="background-image: url('assets/cover_image.webp');">
+  <section class="hero" id="heroSection">
+    <div class="hero-bg" style="background-image: url('assets/cover_image.webp');"></div>
     <div class="hero-overlay"></div>
-    <div class="container hero-content reveal-left">
-      <span class="section-tag" style="color: #00D2C4;">Welcome to the Future</span>
-      <h1 class="hero-title">Experience Smarter Living with STACKLY</h1>
-      <p class="hero-desc">Control your lighting, climate, appliances, and security from anywhere in the world. Save energy, enhance security, and live in absolute comfort.</p>
-      <div class="hero-btns">
-        <a href="samartdevice.html" class="btn btn-white" id="heroCtaPrimary">Explore Devices</a>
-        <a href="contact.html" class="btn btn-secondary" style="color: white; border-color: white;" id="heroCtaSecondary">Get Started</a>
+    <div class="container hero-content">
+      <span class="section-tag hero-tag-animate" style="color: #00D2C4;">Welcome to the Future</span>
+      <h1 class="hero-title hero-title-animate">
+        <span>Experience</span> <span>Smarter</span> <span>Living</span> <span>with</span> <span class="gradient-text">STACKLY</span>
+      </h1>
+      <p class="hero-desc hero-desc-animate">Control your lighting, climate, appliances, and security from anywhere in the world. Save energy, enhance security, and live in absolute comfort.</p>
+      <div class="hero-btns hero-btns-animate">
+        <a href="404.html" class="btn btn-white" id="heroCtaPrimary">Explore Devices</a>
+        <a href="404.html" class="btn btn-secondary" style="color: white; border-color: white;" id="heroCtaSecondary">Get Started</a>
       </div>
     </div>
   </section>
@@ -102,9 +105,9 @@
 
       <div class="device-grid">
         <!-- Device 1 -->
-        <div class="device-card reveal-up">
+        <div class="device-card reveal-zoom-in">
           <div class="device-card-img">
-            <i data-lucide="lightbulb"></i>
+            <img src="assets/bulb.webp" alt="Aura Smart LED Bulb">
             <span class="device-badge">Best Seller</span>
           </div>
           <div class="device-card-content">
@@ -113,15 +116,15 @@
             <p class="device-card-desc">16 million colors, voice assistant control, and custom schedules. Fits into standard sockets.</p>
             <div class="device-card-footer">
               <span class="device-price">$29.99</span>
-              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Device 2 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.1s;">
           <div class="device-card-img">
-            <i data-lucide="thermometer"></i>
+            <img src="assets/thermostat.webp" alt="Nestle Smart Thermostat">
             <span class="device-badge" style="background-color: #10B981;">Eco Saver</span>
           </div>
           <div class="device-card-content">
@@ -130,15 +133,15 @@
             <p class="device-card-desc">Self-learning temperature control that adapts to your routine and reduces energy bill by 23%.</p>
             <div class="device-card-footer">
               <span class="device-price">$189.99</span>
-              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Device 3 -->
-        <div class="device-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="device-card reveal-zoom-in" style="transition-delay: 0.2s;">
           <div class="device-card-img">
-            <i data-lucide="shield-check"></i>
+            <img src="assets/doorlock.webp" alt="Sentinel Smart Door Lock">
             <span class="device-badge" style="background-color: #EF4444;">High Security</span>
           </div>
           <div class="device-card-content">
@@ -147,7 +150,7 @@
             <p class="device-card-desc">Keyless entry, biometric fingerprint scanner, remote access logging, and encrypted backups.</p>
             <div class="device-card-footer">
               <span class="device-price">$249.99</span>
-              <a href="samartdevice.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
+              <a href="404.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Learn More</a>
             </div>
           </div>
         </div>
@@ -165,7 +168,7 @@
       </div>
 
       <div class="features-grid">
-        <div class="feature-card reveal-up">
+        <div class="feature-card reveal-zoom-in">
           <div class="feature-icon-wrapper">
             <i data-lucide="mic"></i>
           </div>
@@ -173,7 +176,7 @@
           <p class="feature-desc">Integrates seamlessly with Alexa, Google Home, and Apple Siri. Manage devices using simple spoken phrases.</p>
         </div>
 
-        <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="feature-card reveal-zoom-in" style="transition-delay: 0.1s;">
           <div class="feature-icon-wrapper">
             <i data-lucide="globe"></i>
           </div>
@@ -181,7 +184,7 @@
           <p class="feature-desc">Monitor security streams, adjust thermostats, and check locks from anywhere in the world via cellular connection.</p>
         </div>
 
-        <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="feature-card reveal-zoom-in" style="transition-delay: 0.2s;">
           <div class="feature-icon-wrapper">
             <i data-lucide="zap"></i>
           </div>
@@ -189,7 +192,7 @@
           <p class="feature-desc">Devices enter low-energy standby states when unoccupied, saving resources without active monitoring.</p>
         </div>
 
-        <div class="feature-card reveal-up" style="transition-delay: 0.3s;">
+        <div class="feature-card reveal-zoom-in" style="transition-delay: 0.3s;">
           <div class="feature-icon-wrapper">
             <i data-lucide="bell"></i>
           </div>
@@ -210,19 +213,19 @@
       </div>
 
       <div class="steps-grid">
-        <div class="step-card reveal-up">
+        <div class="step-card reveal-left">
           <div class="step-num">1</div>
           <h3 class="step-title">Choose Your Devices</h3>
           <p class="step-desc">Select from our catalog of smart lighting, appliances, security modules, and climate control hubs.</p>
         </div>
 
-        <div class="step-card reveal-up" style="transition-delay: 0.15s;">
+        <div class="step-card reveal-up">
           <div class="step-num">2</div>
           <h3 class="step-title">Quick Installation</h3>
           <p class="step-desc">Our certified engineers configure and install all hardware units in your home with zero hassle.</p>
         </div>
 
-        <div class="step-card reveal-up" style="transition-delay: 0.3s;">
+        <div class="step-card reveal-right">
           <div class="step-num">3</div>
           <h3 class="step-title">Automated Control</h3>
           <p class="step-desc">Launch the STACKLY dashboard, set your custom routines, and enjoy smart convenience.</p>
@@ -242,7 +245,7 @@
 
       <div class="testimonials-grid">
         <!-- Review 1 -->
-        <div class="testimonial-card reveal-up">
+        <div class="testimonial-card reveal-zoom-in">
           <div class="testimonial-rating">
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
@@ -261,7 +264,7 @@
         </div>
 
         <!-- Review 2 -->
-        <div class="testimonial-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="testimonial-card reveal-zoom-in" style="transition-delay: 0.1s;">
           <div class="testimonial-rating">
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
@@ -280,7 +283,7 @@
         </div>
 
         <!-- Review 3 -->
-        <div class="testimonial-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="testimonial-card reveal-zoom-in" style="transition-delay: 0.2s;">
           <div class="testimonial-rating">
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
             <i data-lucide="star" style="fill:#FBBF24; stroke:#FBBF24; width:16px;"></i>
@@ -312,7 +315,7 @@
 
       <div class="pricing-grid">
         <!-- Plan 1 -->
-        <div class="pricing-card reveal-up">
+        <div class="pricing-card reveal-zoom-in">
           <h3 class="pricing-name">Basic</h3>
           <div class="pricing-price">$9<span>/mo</span></div>
           <ul class="pricing-features">
@@ -322,11 +325,11 @@
             <li class="disabled"><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
             <li class="disabled"><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
           </ul>
-          <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+          <a href="404.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
         </div>
 
         <!-- Plan 2 -->
-        <div class="pricing-card featured reveal-up" style="transition-delay: 0.1s;">
+        <div class="pricing-card featured reveal-zoom-in" style="transition-delay: 0.1s;">
           <div class="pricing-ribbon">Most Popular</div>
           <h3 class="pricing-name">Premium</h3>
           <div class="pricing-price">$29<span>/mo</span></div>
@@ -337,11 +340,11 @@
             <li><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
             <li class="disabled"><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+          <a href="404.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
         </div>
 
         <!-- Plan 3 -->
-        <div class="pricing-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="pricing-card reveal-zoom-in" style="transition-delay: 0.2s;">
           <h3 class="pricing-name">Enterprise</h3>
           <div class="pricing-price">$79<span>/mo</span></div>
           <ul class="pricing-features">
@@ -351,18 +354,18 @@
             <li><i data-lucide="check-circle-2"></i> Advanced energy analytics</li>
             <li><i data-lucide="check-circle-2"></i> 24/7 Professional monitoring</li>
           </ul>
-          <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+          <a href="404.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 9. Call To Action (CTA) Section -->
-  <section class="cta reveal-up" id="ctaSection">
+  <section class="cta reveal-zoom-in" id="ctaSection">
     <div class="container cta-content">
       <h2 class="cta-title">Get Started Today</h2>
       <p class="cta-desc">Join thousands of families living in the luxury of an automated smart home. Connect with our technical engineers for a free site assessment.</p>
-      <a href="contact.html" class="btn btn-white btn-lg" id="ctaButton">Request Free Assessment</a>
+      <a href="404.html" class="btn btn-white btn-lg" id="ctaButton">Request Free Assessment</a>
     </div>
   </section>
 
@@ -373,12 +376,6 @@
         <div class="footer-brand-box">
           <div class="footer-brand">STACKLY<span>.</span></div>
           <p>STACKLY provides industry-leading smart home automation, security, energy, and comfort solutions for modern households.</p>
-          <div class="footer-socials">
-            <a href="404.html" class="footer-social-link"><i data-lucide="facebook"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="twitter"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="instagram"></i></a>
-            <a href="404.html" class="footer-social-link"><i data-lucide="linkedin"></i></a>
-          </div>
         </div>
 
         <div>
