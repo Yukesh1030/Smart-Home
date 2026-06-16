@@ -9,6 +9,212 @@
   <link rel="stylesheet" href="style.css">
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Custom animations and styling enhancements for Contact Page */
+
+    /* Background image zoom-in/out on load */
+    .page-banner {
+      overflow: hidden;
+      position: relative;
+    }
+    .page-banner-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: bannerZoom 12s ease-out infinite alternate;
+      z-index: 0;
+    }
+    .page-banner-overlay {
+      z-index: 1;
+    }
+    .page-banner-content {
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes bannerZoom {
+      0% { transform: scale(1.0); }
+      100% { transform: scale(1.08); }
+    }
+
+    /* Page Banner title tracking character animation */
+    .page-banner-title {
+      letter-spacing: 2px;
+      animation: letterTrack 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      background: linear-gradient(135deg, #ffffff 0%, #dbeafe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes letterTrack {
+      0% {
+        letter-spacing: -6px;
+        opacity: 0;
+        transform: translateY(-15px);
+      }
+      100% {
+        letter-spacing: 2px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section tags glowing line anim */
+    .section-tag {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .section-tag::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shineTag 3s infinite;
+    }
+    @keyframes shineTag {
+      0% { left: -100%; }
+      30% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    /* Support feature cards transition */
+    .feature-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+      border-color: var(--primary-light);
+      background-color: var(--bg-white);
+    }
+    .feature-icon-wrapper {
+      transition: transform 0.4s ease;
+    }
+    .feature-card:hover .feature-icon-wrapper {
+      transform: scale(1.18) rotate(5deg);
+    }
+
+    /* Contact channels hover states */
+    .contact-method {
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+    .contact-method:hover {
+      background-color: var(--bg-white);
+      border-color: var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(8px);
+    }
+    .contact-icon {
+      transition: all 0.3s ease;
+    }
+    .contact-method:hover .contact-icon {
+      transform: scale(1.2) rotate(-10deg);
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Input focus glowing shadows */
+    .form-control {
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+
+    /* FAQ accordion active hover look */
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-item:hover {
+      border-color: var(--primary-light);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+    }
+    .faq-item.active {
+      border-color: var(--primary-color);
+      box-shadow: 0 10px 20px rgba(59,130,246,0.08);
+      background-color: var(--bg-white);
+    }
+    .faq-header {
+      padding: 1.25rem 1.5rem;
+      background: none;
+      transition: background-color 0.3s ease;
+    }
+    .faq-item.active .faq-header {
+      background-color: rgba(59, 130, 246, 0.03);
+    }
+
+    /* Interactive button transition overlay */
+    .btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+    .btn:hover::after {
+      transform: translateY(0);
+    }
+
+    /* Interactive real-time google map box shadow */
+    .map-box {
+      box-shadow: var(--shadow-lg);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+    .map-box:hover {
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+    }
+
+    /* Mobile responsive overrides */
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .contact-card {
+        padding: 2rem 1.5rem;
+      }
+      .faq-header {
+        padding: 1rem 1.25rem;
+      }
+      .feature-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .contact-method {
+        padding: 0.75rem 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -39,12 +245,13 @@
   </header>
 
   <!-- 2. Page Banner Section -->
-  <section class="page-banner" id="contactBannerSection" style="background-image: url('assets/contact.webp');">
+  <section class="page-banner" id="contactBannerSection">
+    <div class="page-banner-bg" style="background-image: url('assets/contact.webp');"></div>
     <div class="page-banner-overlay"></div>
     <div class="container page-banner-content reveal-left">
       <h1 class="page-banner-title">Contact Us</h1>
       <div class="page-banner-breadcrumbs">
-        <a href="index.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Contact</span>
+        <a href="404.html">Home</a> <i data-lucide="chevron-right" style="width:14px;"></i> <span>Contact</span>
       </div>
     </div>
   </section>
@@ -224,15 +431,7 @@
       </div>
 
       <div class="map-box reveal-up" id="officeMap">
-        <div class="map-mockup">
-          <div class="map-bubble">
-            STACKLY Corporate Hub<br>
-            <span style="font-weight:400; color:var(--text-muted); font-size:0.75rem;">Tata Power EZHome District, Mumbai</span>
-          </div>
-          <div class="map-pin">
-            <i data-lucide="map-pin" style="width:20px; height:20px;"></i>
-          </div>
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.8011147040447!2d72.84161747582522!3d18.940176882240974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c68e1a3b1f%3A0x6b8bc22db6e3a6a9!2sTata%20Power%20Company%20Limited!5e0!3m2!1sen!2sin!4v1718530000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>

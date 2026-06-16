@@ -119,32 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const emailInput = contactForm.querySelector('input[type="email"]');
       const msgTextarea = contactForm.querySelector('textarea');
       
-      if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || msgTextarea.value.trim() === '') {
-        alert('Please fill out all required fields.');
+      if (!nameInput || !emailInput || !msgTextarea || 
+          nameInput.value.trim() === '' || 
+          emailInput.value.trim() === '' || 
+          msgTextarea.value.trim() === '') {
         return;
       }
       
-      // Simple animated success state
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="spin-icon" data-lucide="loader-2"></i> Sending...';
-      lucide.createIcons();
-      
-      setTimeout(() => {
-        submitBtn.innerHTML = '<i data-lucide="check"></i> Sent successfully!';
-        lucide.createIcons();
-        submitBtn.style.backgroundColor = '#10B981'; // Green color for success
-        
-        setTimeout(() => {
-          contactForm.reset();
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.backgroundColor = '';
-          lucide.createIcons();
-          alert('Thank you for contacting STACKLY! We will get back to you shortly.');
-        }, 2000);
-      }, 1500);
+      // Immediately redirect to 404 page (no alert message)
+      window.location.href = '404.html';
     });
   }
 
